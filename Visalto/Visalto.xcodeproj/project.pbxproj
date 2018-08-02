@@ -11,6 +11,8 @@
 		AFCF83E321139E64000189F2 /* VisaltoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCF83E221139E64000189F2 /* VisaltoTests.swift */; };
 		AFCF83E521139E64000189F2 /* Visalto.h in Headers */ = {isa = PBXBuildFile; fileRef = AFCF83D721139E64000189F2 /* Visalto.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AFCF83F121139E9F000189F2 /* Visalto.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCF83F021139E9F000189F2 /* Visalto.swift */; };
+		AFCF83F321139EE4000189F2 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCF83F221139EE4000189F2 /* AsyncOperation.swift */; };
+		AFCF83F621139F11000189F2 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCF83F521139F11000189F2 /* Result.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +33,8 @@
 		AFCF83E221139E64000189F2 /* VisaltoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisaltoTests.swift; sourceTree = "<group>"; };
 		AFCF83E421139E64000189F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFCF83F021139E9F000189F2 /* Visalto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Visalto.swift; sourceTree = "<group>"; };
+		AFCF83F221139EE4000189F2 /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
+		AFCF83F521139F11000189F2 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,7 @@
 		AFCF83D621139E64000189F2 /* Visalto */ = {
 			isa = PBXGroup;
 			children = (
+				AFCF83F421139F04000189F2 /* Model */,
 				AFCF83EE21139E8B000189F2 /* Utils */,
 				AFCF83D721139E64000189F2 /* Visalto.h */,
 				AFCF83D821139E64000189F2 /* Info.plist */,
@@ -93,8 +98,17 @@
 		AFCF83EE21139E8B000189F2 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				AFCF83F221139EE4000189F2 /* AsyncOperation.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		AFCF83F421139F04000189F2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AFCF83F521139F11000189F2 /* Result.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,6 +220,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFCF83F621139F11000189F2 /* Result.swift in Sources */,
+				AFCF83F321139EE4000189F2 /* AsyncOperation.swift in Sources */,
 				AFCF83F121139E9F000189F2 /* Visalto.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

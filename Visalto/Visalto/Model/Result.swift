@@ -1,5 +1,5 @@
 //
-//  Visalto.swift
+//  Result.swift
 //  Visalto
 //
 //  Created by Vladislav Fitc on 02/08/2018.
@@ -8,12 +8,7 @@
 
 import Foundation
 
-final class Visalto {
-    
-    static let shared = Visalto()
-    
-    private init() {
-        
-    }
-    
+enum Result<Value> {
+    case success(Value)
+    case failure(Swift.Error)
 }
