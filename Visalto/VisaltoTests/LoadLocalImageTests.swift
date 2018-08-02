@@ -15,7 +15,7 @@ class LoadLocalImageTests: XCTestCase {
         
         let exp = expectation(description: "Load eiffel tower image from disk")
         
-        let url = Bundle(for: LoadLocalImageTests.self).url(forResource: "ET0", withExtension: "jpeg")!
+        let url = Bundle.testBundle.url(forResource: "ET0", withExtension: "jpeg")!
         
         let loadImage = LoadLocalImage(url: url)!
         
