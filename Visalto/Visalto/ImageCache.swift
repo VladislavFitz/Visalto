@@ -24,4 +24,16 @@ final class ImageCache {
         storage.setObject(image, forKey: key as NSURL)
     }
     
+    func contains(_ key: URL) -> Bool {
+        return storage.object(forKey: key as NSURL) != nil
+    }
+    
+    func remove(for key: URL) {
+        storage.removeObject(forKey: key as NSURL)
+    }
+    
+    func clear() {
+        storage.removeAllObjects()
+    }
+    
 }

@@ -15,8 +15,7 @@ class LoadRemoteImageTests: XCTestCase {
         
         let exp = expectation(description: "Load eiffel tower image from web")
         
-        let url = URL(string: "https://www.toureiffel.paris/themes/custom/tour_eiffel/img/poster-tour-eiffel-jour-nuit.jpg")!
-        
+        let url = RemoteTestImages.urls[0]
         let loadImage = LoadRemoteImage(url: url)!
         
         loadImage.qualityOfService = .default
