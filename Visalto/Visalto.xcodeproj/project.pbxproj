@@ -10,6 +10,7 @@
 		AFCF83DE21139E64000189F2 /* Visalto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFCF83D421139E64000189F2 /* Visalto.framework */; };
 		AFCF83E321139E64000189F2 /* VisaltoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCF83E221139E64000189F2 /* VisaltoTests.swift */; };
 		AFCF83E521139E64000189F2 /* Visalto.h in Headers */ = {isa = PBXBuildFile; fileRef = AFCF83D721139E64000189F2 /* Visalto.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AFCF83F121139E9F000189F2 /* Visalto.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCF83F021139E9F000189F2 /* Visalto.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		AFCF83DD21139E64000189F2 /* VisaltoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VisaltoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFCF83E221139E64000189F2 /* VisaltoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisaltoTests.swift; sourceTree = "<group>"; };
 		AFCF83E421139E64000189F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AFCF83F021139E9F000189F2 /* Visalto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Visalto.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,8 +73,10 @@
 		AFCF83D621139E64000189F2 /* Visalto */ = {
 			isa = PBXGroup;
 			children = (
+				AFCF83EE21139E8B000189F2 /* Utils */,
 				AFCF83D721139E64000189F2 /* Visalto.h */,
 				AFCF83D821139E64000189F2 /* Info.plist */,
+				AFCF83F021139E9F000189F2 /* Visalto.swift */,
 			);
 			path = Visalto;
 			sourceTree = "<group>";
@@ -84,6 +88,13 @@
 				AFCF83E421139E64000189F2 /* Info.plist */,
 			);
 			path = VisaltoTests;
+			sourceTree = "<group>";
+		};
+		AFCF83EE21139E8B000189F2 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,6 +159,7 @@
 				TargetAttributes = {
 					AFCF83D321139E64000189F2 = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 0940;
 					};
 					AFCF83DC21139E64000189F2 = {
 						CreatedOnToolsVersion = 9.4;
@@ -194,6 +206,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFCF83F121139E9F000189F2 /* Visalto.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +352,7 @@
 		AFCF83E921139E64000189F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -356,6 +370,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = fitc.Visalto;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -364,6 +379,7 @@
 		AFCF83EA21139E64000189F2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -389,6 +405,7 @@
 		AFCF83EC21139E64000189F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3MM327Z8HD;
 				INFOPLIST_FILE = VisaltoTests/Info.plist;
@@ -407,6 +424,7 @@
 		AFCF83ED21139E64000189F2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3MM327Z8HD;
 				INFOPLIST_FILE = VisaltoTests/Info.plist;
