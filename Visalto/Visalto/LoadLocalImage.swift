@@ -8,7 +8,7 @@
 
 import Foundation
 
-class LoadLocalImage: Operation {
+class LoadLocalImage: Operation, ImageResultContainer {
     
     let url: URL
     var result: Result<UIImage>?

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class LoadRemoteImage: AsyncOperation {
+class LoadRemoteImage: AsyncOperation, ImageResultContainer {
     
     let url: URL
     var result: Result<UIImage>?

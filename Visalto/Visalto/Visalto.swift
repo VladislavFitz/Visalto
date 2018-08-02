@@ -21,4 +21,33 @@ final class Visalto {
         cache = ImageCache()
     }
     
+    func loadImage(with url: URL, qos: QualityOfService = .userInitiated, completionQueue: DispatchQueue = .main, completion: @escaping (Result<UIImage>) -> Void) {
+        
+        let operation: LoadImage
+        
+        if url.isFileURL {
+            operation = LoadLocalImage(url: url)!
+        } else {
+            operation = LoadRemoteImage(url: url)!
+        }
+        
+        operation.qualityOfService = .userInteractive
+        
+        operation.completionBlock = {
+            
+            guard let result = operation.result else {
+                return
+            }
+            
+            completionQueue.async {
+                completion(result)
+            }
+            
+        }
+        
+        queue.addOperation(operation)
+
+        
+    }
+    
 }
