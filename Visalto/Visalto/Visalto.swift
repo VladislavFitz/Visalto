@@ -12,8 +12,13 @@ final class Visalto {
     
     static let shared = Visalto()
     
+    internal let queue: OperationQueue
+    internal let cache: ImageCache
+    
     private init() {
-        
+        queue = OperationQueue()
+        queue.qualityOfService = .utility
+        cache = ImageCache()
     }
     
 }

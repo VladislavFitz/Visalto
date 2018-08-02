@@ -8,11 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		AFCF83DE21139E64000189F2 /* Visalto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFCF83D421139E64000189F2 /* Visalto.framework */; };
-		AFCF83E321139E64000189F2 /* VisaltoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCF83E221139E64000189F2 /* VisaltoTests.swift */; };
 		AFCF83E521139E64000189F2 /* Visalto.h in Headers */ = {isa = PBXBuildFile; fileRef = AFCF83D721139E64000189F2 /* Visalto.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AFCF83F121139E9F000189F2 /* Visalto.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCF83F021139E9F000189F2 /* Visalto.swift */; };
 		AFCF83F321139EE4000189F2 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCF83F221139EE4000189F2 /* AsyncOperation.swift */; };
 		AFCF83F621139F11000189F2 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCF83F521139F11000189F2 /* Result.swift */; };
+		AFCF83F82113A1B5000189F2 /* LoadRemoteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCF83F72113A1B5000189F2 /* LoadRemoteImage.swift */; };
+		AFCF83FA2113A1CA000189F2 /* ImageLoadingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCF83F92113A1CA000189F2 /* ImageLoadingError.swift */; };
+		AFCF83FC2113A20C000189F2 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCF83FB2113A20C000189F2 /* ImageCache.swift */; };
+		AFCF83FE2113A3FE000189F2 /* LoadLocalImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCF83FD2113A3FE000189F2 /* LoadLocalImage.swift */; };
+		AFCF84002113A54C000189F2 /* VisaltoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCF83FF2113A54C000189F2 /* VisaltoTests.swift */; };
+		AFCF84022113A59B000189F2 /* LoadRemoteImageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCF84012113A59B000189F2 /* LoadRemoteImageTests.swift */; };
+		AFCF84042113A5A5000189F2 /* LoadLocalImageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCF84032113A5A5000189F2 /* LoadLocalImageTests.swift */; };
+		AFCF84062113A5AE000189F2 /* ImageCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCF84052113A5AE000189F2 /* ImageCacheTests.swift */; };
+		AFCF84092113A87E000189F2 /* ET0.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = AFCF84082113A87E000189F2 /* ET0.jpeg */; };
+		AFCF840B2113A88F000189F2 /* ET1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AFCF840A2113A88F000189F2 /* ET1.jpg */; };
+		AFCF840D2113A8A5000189F2 /* ET2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AFCF840C2113A8A5000189F2 /* ET2.jpg */; };
+		AFCF840F2113A8BA000189F2 /* ET3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AFCF840E2113A8BA000189F2 /* ET3.jpg */; };
+		AFCF84112113A8CF000189F2 /* ET4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AFCF84102113A8CF000189F2 /* ET4.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,11 +42,23 @@
 		AFCF83D721139E64000189F2 /* Visalto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Visalto.h; sourceTree = "<group>"; };
 		AFCF83D821139E64000189F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFCF83DD21139E64000189F2 /* VisaltoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VisaltoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AFCF83E221139E64000189F2 /* VisaltoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisaltoTests.swift; sourceTree = "<group>"; };
 		AFCF83E421139E64000189F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFCF83F021139E9F000189F2 /* Visalto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Visalto.swift; sourceTree = "<group>"; };
 		AFCF83F221139EE4000189F2 /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		AFCF83F521139F11000189F2 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		AFCF83F72113A1B5000189F2 /* LoadRemoteImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadRemoteImage.swift; sourceTree = "<group>"; };
+		AFCF83F92113A1CA000189F2 /* ImageLoadingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoadingError.swift; sourceTree = "<group>"; };
+		AFCF83FB2113A20C000189F2 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		AFCF83FD2113A3FE000189F2 /* LoadLocalImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadLocalImage.swift; sourceTree = "<group>"; };
+		AFCF83FF2113A54C000189F2 /* VisaltoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisaltoTests.swift; sourceTree = "<group>"; };
+		AFCF84012113A59B000189F2 /* LoadRemoteImageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadRemoteImageTests.swift; sourceTree = "<group>"; };
+		AFCF84032113A5A5000189F2 /* LoadLocalImageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadLocalImageTests.swift; sourceTree = "<group>"; };
+		AFCF84052113A5AE000189F2 /* ImageCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheTests.swift; sourceTree = "<group>"; };
+		AFCF84082113A87E000189F2 /* ET0.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ET0.jpeg; sourceTree = "<group>"; };
+		AFCF840A2113A88F000189F2 /* ET1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ET1.jpg; sourceTree = "<group>"; };
+		AFCF840C2113A8A5000189F2 /* ET2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ET2.jpg; sourceTree = "<group>"; };
+		AFCF840E2113A8BA000189F2 /* ET3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ET3.jpg; sourceTree = "<group>"; };
+		AFCF84102113A8CF000189F2 /* ET4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ET4.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +106,10 @@
 				AFCF83D721139E64000189F2 /* Visalto.h */,
 				AFCF83D821139E64000189F2 /* Info.plist */,
 				AFCF83F021139E9F000189F2 /* Visalto.swift */,
+				AFCF83FB2113A20C000189F2 /* ImageCache.swift */,
+				AFCF83F72113A1B5000189F2 /* LoadRemoteImage.swift */,
+				AFCF83FD2113A3FE000189F2 /* LoadLocalImage.swift */,
+				AFCF83F92113A1CA000189F2 /* ImageLoadingError.swift */,
 			);
 			path = Visalto;
 			sourceTree = "<group>";
@@ -89,7 +117,11 @@
 		AFCF83E121139E64000189F2 /* VisaltoTests */ = {
 			isa = PBXGroup;
 			children = (
-				AFCF83E221139E64000189F2 /* VisaltoTests.swift */,
+				AFCF84072113A869000189F2 /* TestImages */,
+				AFCF83FF2113A54C000189F2 /* VisaltoTests.swift */,
+				AFCF84012113A59B000189F2 /* LoadRemoteImageTests.swift */,
+				AFCF84032113A5A5000189F2 /* LoadLocalImageTests.swift */,
+				AFCF84052113A5AE000189F2 /* ImageCacheTests.swift */,
 				AFCF83E421139E64000189F2 /* Info.plist */,
 			);
 			path = VisaltoTests;
@@ -109,6 +141,18 @@
 				AFCF83F521139F11000189F2 /* Result.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		AFCF84072113A869000189F2 /* TestImages */ = {
+			isa = PBXGroup;
+			children = (
+				AFCF84082113A87E000189F2 /* ET0.jpeg */,
+				AFCF840A2113A88F000189F2 /* ET1.jpg */,
+				AFCF840C2113A8A5000189F2 /* ET2.jpg */,
+				AFCF840E2113A8BA000189F2 /* ET3.jpg */,
+				AFCF84102113A8CF000189F2 /* ET4.jpg */,
+			);
+			path = TestImages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +221,7 @@
 					};
 					AFCF83DC21139E64000189F2 = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 0940;
 					};
 				};
 			};
@@ -210,6 +255,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFCF84112113A8CF000189F2 /* ET4.jpg in Resources */,
+				AFCF840F2113A8BA000189F2 /* ET3.jpg in Resources */,
+				AFCF840B2113A88F000189F2 /* ET1.jpg in Resources */,
+				AFCF84092113A87E000189F2 /* ET0.jpeg in Resources */,
+				AFCF840D2113A8A5000189F2 /* ET2.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,9 +270,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFCF83FC2113A20C000189F2 /* ImageCache.swift in Sources */,
+				AFCF83FE2113A3FE000189F2 /* LoadLocalImage.swift in Sources */,
 				AFCF83F621139F11000189F2 /* Result.swift in Sources */,
+				AFCF83FA2113A1CA000189F2 /* ImageLoadingError.swift in Sources */,
 				AFCF83F321139EE4000189F2 /* AsyncOperation.swift in Sources */,
 				AFCF83F121139E9F000189F2 /* Visalto.swift in Sources */,
+				AFCF83F82113A1B5000189F2 /* LoadRemoteImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,7 +284,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFCF83E321139E64000189F2 /* VisaltoTests.swift in Sources */,
+				AFCF84002113A54C000189F2 /* VisaltoTests.swift in Sources */,
+				AFCF84022113A59B000189F2 /* LoadRemoteImageTests.swift in Sources */,
+				AFCF84062113A5AE000189F2 /* ImageCacheTests.swift in Sources */,
+				AFCF84042113A5A5000189F2 /* LoadLocalImageTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +479,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3MM327Z8HD;
 				INFOPLIST_FILE = VisaltoTests/Info.plist;
@@ -432,6 +490,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = fitc.VisaltoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -441,6 +500,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3MM327Z8HD;
 				INFOPLIST_FILE = VisaltoTests/Info.plist;
