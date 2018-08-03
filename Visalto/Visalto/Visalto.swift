@@ -28,10 +28,18 @@ final class Visalto {
         return loadImageByURL[url]
     }
     
+    /**
+     - returns: load image operation
+     - parameter url: URL to image
+     - parameter qos: Quality of service of image loading
+     - parameter completionQueue: Dispatch queue in which completion will be called
+     - parameter completion: Callback returning result of load image operation
+    */
+    
     public func loadImage(with url: URL,
                    qos: QualityOfService = .userInitiated,
                    completionQueue: DispatchQueue = .main,
-                   completion: @escaping (Result<UIImage>) -> Void) {
+                   completion: @escaping (Result<UIImage>) -> Void) -> LoadImage {
         
         let loadImage: LoadImage
         
@@ -60,6 +68,8 @@ final class Visalto {
         loadImageByURL[url] = loadImage
         
         queue.addOperation(loadImage.operation)
+        
+        return loadImage
         
     }
     
