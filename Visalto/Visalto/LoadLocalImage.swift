@@ -25,10 +25,6 @@ class LoadLocalImage: Operation, LoadImage {
     
     override func main() {
         
-        if let cachedImage = Visalto.shared.cache.load(for: url) {
-            result = .success(cachedImage)
-        }
-        
         do {
             
             let data = try Data(contentsOf: url)
@@ -42,7 +38,6 @@ class LoadLocalImage: Operation, LoadImage {
                 return
             }
             
-            Visalto.shared.cache.store(image, forKey: url)
             result = .success(image)
             
         } catch let error {

@@ -26,12 +26,6 @@ class LoadRemoteImage: AsyncOperation, LoadImage {
     }
     
     override func main() {
-                
-        if let cachedImage = Visalto.shared.cache.load(for: url) {
-            result = .success(cachedImage)
-            state = .finished
-            return
-        }
         
         let task = URLSession.shared.dataTask(with: url) { [weak self] (data, respose, error) in
             
@@ -53,9 +47,7 @@ class LoadRemoteImage: AsyncOperation, LoadImage {
                     strongSelf.result = .failure(ImageLoadingError.invalidData(data))
                     return
                 }
-                
-                Visalto.shared.cache.store(image, forKey: strongSelf.url)
-                
+                                
                 strongSelf.result = .success(image)
                 
             }

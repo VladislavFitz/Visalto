@@ -15,17 +15,17 @@ final class Visalto {
     internal let queue: OperationQueue
     internal let cache: ImageCache
     
-    private var loadImageByURL: [URL: LoadImage]
+    private var loadOperationsByURL: [URL: LoadImage]
     
     private init() {
         queue = OperationQueue()
         queue.qualityOfService = .utility
         cache = ImageCache()
-        loadImageByURL = [:]
+        loadOperationsByURL = [:]
     }
     
     public func executingLoadImage(for url: URL) -> LoadImage? {
-        return loadImageByURL[url]
+        return loadOperationsByURL[url]
     }
     
     /**
@@ -39,7 +39,18 @@ final class Visalto {
     public func loadImage(with url: URL,
                    qos: QualityOfService = .userInitiated,
                    completionQueue: DispatchQueue = .main,
-                   completion: @escaping (Result<UIImage>) -> Void) -> LoadImage {
+                   completion: @escaping (Result<UIImage>) -> Void) -> LoadImage? {
+        
+        
+        if let cachedImage = cache.load(for: url) {
+            
+            completionQueue.async {
+                completion(.success(cachedImage))
+            }
+            
+            return .none
+            
+        }
         
         let loadImage: LoadImage
         
@@ -53,10 +64,14 @@ final class Visalto {
         
         loadImage.operation.completionBlock = { [weak self] in
             
-            self?.loadImageByURL.removeValue(forKey: url)
+            self?.loadOperationsByURL.removeValue(forKey: url)
             
             guard let result = loadImage.result else {
                 return
+            }
+            
+            if case .success(let image) = result {
+                self?.cache.store(image, forKey: url)
             }
             
             completionQueue.async {
@@ -65,7 +80,7 @@ final class Visalto {
             
         }
         
-        loadImageByURL[url] = loadImage
+        loadOperationsByURL[url] = loadImage
         
         queue.addOperation(loadImage.operation)
         
