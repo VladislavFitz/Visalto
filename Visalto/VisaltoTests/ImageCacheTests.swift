@@ -25,8 +25,8 @@ class ImageCacheTests: XCTestCase {
     
     func testLoad() {
         
-        XCTAssertNotNil(cache.load(for: LocalTestImages.urls[0]), "Image ET0 wasn't loaded")
-        XCTAssertNil(cache.load(for: LocalTestImages.urls[1]), "Image ET1 isn't in the cache")
+        XCTAssertNotNil(cache.load(for: LocalTestImages.urls[0]), "Image ET0 must be in the cache")
+        XCTAssertNil(cache.load(for: LocalTestImages.urls[1]), "Image ET1 must not be in the cache")
                 
     }
     
@@ -34,8 +34,8 @@ class ImageCacheTests: XCTestCase {
         
         cache.store(LocalTestImages.image(atIndex: 1)!, forKey: LocalTestImages.urls[1])
         
-        XCTAssertNotNil(cache.load(for: LocalTestImages.urls[0]), "Image ET0 isn't in the cache")
-        XCTAssertNotNil(cache.load(for: LocalTestImages.urls[1]), "Image ET0 isn't in the cache")
+        XCTAssertNotNil(cache.load(for: LocalTestImages.urls[0]), "Image ET0 must be in the cache")
+        XCTAssertNotNil(cache.load(for: LocalTestImages.urls[1]), "Image ET1 must be in the cache")
 
     }
     
@@ -43,7 +43,7 @@ class ImageCacheTests: XCTestCase {
         
         cache.remove(for: LocalTestImages.urls[0])
         
-        XCTAssertNil(cache.load(for: LocalTestImages.urls[0]), "Image ET0 mustn't be in cache")
+        XCTAssertNil(cache.load(for: LocalTestImages.urls[0]), "Image ET0 must not be in the cache")
         
     }
     

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class LoadRemoteImage: AsyncOperation, ImageResultContainer {
+class LoadRemoteImage: AsyncOperation, LoadImage {
     
     let url: URL
     var result: Result<UIImage>?
@@ -26,7 +26,7 @@ class LoadRemoteImage: AsyncOperation, ImageResultContainer {
     }
     
     override func main() {
-        
+                
         if let cachedImage = Visalto.shared.cache.load(for: url) {
             result = .success(cachedImage)
             state = .finished

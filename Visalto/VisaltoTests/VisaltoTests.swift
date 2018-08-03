@@ -21,16 +21,25 @@ class VisaltoTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testLoadImage() {
+        
+        let url = LocalTestImages.urls[0]
+        
+        Visalto.shared.loadImage(with: url) { result in
+            
+            switch result {
+            case .success:
+                break
+            
+            case .failure(let error):
+                XCTFail("Test image wasn't loaded due to error: \(error.localizedDescription)")
+            }
+            
+            XCTAssertNil(Visalto.shared.executingLoadImage(for: url), "Operation wasn't destroyed after completion")
+        
         }
+        
+        XCTAssertNotNil(Visalto.shared.executingLoadImage(for: url), "Operation was destroyed before completion")
     }
     
 }

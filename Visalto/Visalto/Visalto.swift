@@ -15,27 +15,39 @@ final class Visalto {
     internal let queue: OperationQueue
     internal let cache: ImageCache
     
+    private var loadImageByURL: [URL: LoadImage]
+    
     private init() {
         queue = OperationQueue()
         queue.qualityOfService = .utility
         cache = ImageCache()
+        loadImageByURL = [:]
     }
     
-    func loadImage(with url: URL, qos: QualityOfService = .userInitiated, completionQueue: DispatchQueue = .main, completion: @escaping (Result<UIImage>) -> Void) {
+    public func executingLoadImage(for url: URL) -> LoadImage? {
+        return loadImageByURL[url]
+    }
+    
+    public func loadImage(with url: URL,
+                   qos: QualityOfService = .userInitiated,
+                   completionQueue: DispatchQueue = .main,
+                   completion: @escaping (Result<UIImage>) -> Void) {
         
-        let operation: LoadImage
+        let loadImage: LoadImage
         
         if url.isFileURL {
-            operation = LoadLocalImage(url: url)!
+            loadImage = LoadLocalImage(url: url)!
         } else {
-            operation = LoadRemoteImage(url: url)!
+            loadImage = LoadRemoteImage(url: url)!
         }
         
-        operation.qualityOfService = .userInteractive
+        loadImage.operation.qualityOfService = qos
         
-        operation.completionBlock = {
+        loadImage.operation.completionBlock = { [weak self] in
             
-            guard let result = operation.result else {
+            self?.loadImageByURL.removeValue(forKey: url)
+            
+            guard let result = loadImage.result else {
                 return
             }
             
@@ -45,9 +57,14 @@ final class Visalto {
             
         }
         
-        queue.addOperation(operation)
-
+        loadImageByURL[url] = loadImage
         
+        queue.addOperation(loadImage.operation)
+        
+    }
+    
+    public func cancelAll() {
+        queue.cancelAllOperations()
     }
     
 }

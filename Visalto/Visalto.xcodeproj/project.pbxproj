@@ -34,7 +34,7 @@
 		AFCF841A2113AF40000189F2 /* ET4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AFCF84102113A8CF000189F2 /* ET4.jpg */; };
 		AFCF841C2113B242000189F2 /* ImageURLs in Resources */ = {isa = PBXBuildFile; fileRef = AFCF841B2113B242000189F2 /* ImageURLs */; };
 		AFCF841E2113B53A000189F2 /* RemoteTestImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCF841D2113B53A000189F2 /* RemoteTestImages.swift */; };
-		AFCF84222113B74C000189F2 /* ImageResultContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCF84212113B74C000189F2 /* ImageResultContainer.swift */; };
+		AFCF84222113B74C000189F2 /* LoadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCF84212113B74C000189F2 /* LoadImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,7 +73,7 @@
 		AFCF84142113ABBF000189F2 /* LocalTestImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalTestImages.swift; sourceTree = "<group>"; };
 		AFCF841B2113B242000189F2 /* ImageURLs */ = {isa = PBXFileReference; lastKnownFileType = text; path = ImageURLs; sourceTree = "<group>"; };
 		AFCF841D2113B53A000189F2 /* RemoteTestImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteTestImages.swift; sourceTree = "<group>"; };
-		AFCF84212113B74C000189F2 /* ImageResultContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageResultContainer.swift; sourceTree = "<group>"; };
+		AFCF84212113B74C000189F2 /* LoadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,7 +122,7 @@
 				AFCF83D821139E64000189F2 /* Info.plist */,
 				AFCF83F021139E9F000189F2 /* Visalto.swift */,
 				AFCF83FB2113A20C000189F2 /* ImageCache.swift */,
-				AFCF84212113B74C000189F2 /* ImageResultContainer.swift */,
+				AFCF84212113B74C000189F2 /* LoadImage.swift */,
 				AFCF83F72113A1B5000189F2 /* LoadRemoteImage.swift */,
 				AFCF83FD2113A3FE000189F2 /* LoadLocalImage.swift */,
 				AFCF83F92113A1CA000189F2 /* ImageLoadingError.swift */,
@@ -298,7 +298,7 @@
 			files = (
 				AFCF83FC2113A20C000189F2 /* ImageCache.swift in Sources */,
 				AFCF83FE2113A3FE000189F2 /* LoadLocalImage.swift in Sources */,
-				AFCF84222113B74C000189F2 /* ImageResultContainer.swift in Sources */,
+				AFCF84222113B74C000189F2 /* LoadImage.swift in Sources */,
 				AFCF83F621139F11000189F2 /* Result.swift in Sources */,
 				AFCF83FA2113A1CA000189F2 /* ImageLoadingError.swift in Sources */,
 				AFCF83F321139EE4000189F2 /* AsyncOperation.swift in Sources */,
