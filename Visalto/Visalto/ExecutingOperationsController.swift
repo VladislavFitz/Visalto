@@ -25,11 +25,11 @@ internal class ExecutingOperationsController {
         return operationsByURL[url]
     }
     
-    internal func add(_ loadImage: LoadImage) {
+    internal func add(_ loadImage: LoadImage, for url: URL) {
         objc_sync_enter(lock)
         defer { objc_sync_exit(lock) }
 
-        operationsByURL[loadImage.url] = loadImage
+        operationsByURL[url] = loadImage
     }
     
     internal func removeOperation(for url: URL) {
@@ -37,6 +37,10 @@ internal class ExecutingOperationsController {
         defer { objc_sync_exit(lock) }
 
         operationsByURL.removeValue(forKey: url)
+    }
+    
+    internal func clear() {
+        operationsByURL.removeAll()
     }
     
 }

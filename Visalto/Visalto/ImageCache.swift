@@ -17,7 +17,6 @@ public final class ImageCache {
     init(useDisk: Bool = true) {
         storage = NSCache()
         lock = NSObject()
-        storage.countLimit = 5
         diskCache = useDisk ? try? DiskCache() : .none
     }
     

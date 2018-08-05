@@ -24,22 +24,18 @@ class StartViewController: UIViewController {
         nextButton.addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
         view.addSubview(nextButton)
         
+        
         NSLayoutConstraint.activate([
             nextButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             nextButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
         
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         
-        Visalto.shared.cache.clear()
-    }
-    
     @objc private func didTapButton(_ button: UIButton) {
         let imageTableViewController = ImageTableViewController(style: .plain)
         navigationController?.pushViewController(imageTableViewController, animated: true)
     }
+    
     
 }

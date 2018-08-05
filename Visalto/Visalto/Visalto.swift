@@ -36,10 +36,15 @@ public final class Visalto {
                    completionQueue: DispatchQueue = .main,
                    completion: @escaping (Result<UIImage>) -> Void) {
         
-//        if let existingOperation = executingOperations.operation(for: url),
-//            existingOperation.operation.isReady || existingOperation.operation.isExecuting {
-//            return
-//        }
+        /*
+            If an operation with specified URL is alredy launched or waiting,
+            no need to create one more operation
+        */
+        
+        if let existingOperation = executingOperations.operation(for: url),
+            existingOperation.operation.isReady || existingOperation.operation.isExecuting {
+            return
+        }
         
         let effectiveURL: URL
         
@@ -66,7 +71,7 @@ public final class Visalto {
         
         let loadImage = LoadImageFactory.loadImage(for: effectiveURL)
         
-        executingOperations.add(loadImage)
+        executingOperations.add(loadImage, for: url)
         
         loadImage.operation.qualityOfService = qos
         
@@ -78,6 +83,10 @@ public final class Visalto {
             
             guard let result = loadImage.result else {
                 return
+            }
+            
+            if case .failure(let error) = result {
+                print(error.localizedDescription)
             }
             
             if case .success(let image) = result {
@@ -110,7 +119,7 @@ public final class Visalto {
     
     public func cancelAll() {
         queue.cancelAllOperations()
-        executingOperations.operationsByURL.removeAll()
+        executingOperations.clear()
     }
     
 }

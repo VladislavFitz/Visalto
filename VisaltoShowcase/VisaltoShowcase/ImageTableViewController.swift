@@ -25,6 +25,15 @@ class ImageTableViewController: UITableViewController {
         configure()
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let dropCacheButton = UIBarButtonItem(title: "Drop cache", style: .plain, target: self, action: #selector(didTapDropCacheButton(_:)))
+        navigationItem.rightBarButtonItem = dropCacheButton
+        tableView.reloadData()
+        
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return urls.count
     }
@@ -63,6 +72,10 @@ class ImageTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let url = urls[indexPath.row]
         Visalto.shared.cancelLoading(for: url)
+    }
+    
+    @objc private func didTapDropCacheButton(_ barButtonItem: UIBarButtonItem) {
+        Visalto.shared.cache.clear()
     }
     
 }
