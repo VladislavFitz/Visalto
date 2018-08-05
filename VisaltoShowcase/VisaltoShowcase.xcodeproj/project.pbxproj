@@ -1,0 +1,452 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AF7A461921177D7700263756 /* Visalto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF7A461621177D6500263756 /* Visalto.framework */; };
+		AF7A461A21177D7700263756 /* Visalto.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AF7A461621177D6500263756 /* Visalto.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AF7A461E211789CD00263756 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7A461D211789CD00263756 /* StartViewController.swift */; };
+		AFC0B27B2117622B0070A190 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC0B27A2117622B0070A190 /* AppDelegate.swift */; };
+		AFC0B2802117622B0070A190 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFC0B27E2117622B0070A190 /* Main.storyboard */; };
+		AFC0B2822117622C0070A190 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFC0B2812117622C0070A190 /* Assets.xcassets */; };
+		AFC0B2852117622C0070A190 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFC0B2832117622C0070A190 /* LaunchScreen.storyboard */; };
+		AFC0B296211766300070A190 /* ImageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC0B294211766300070A190 /* ImageTableViewController.swift */; };
+		AFC0B297211766300070A190 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC0B295211766300070A190 /* ImageTableViewCell.swift */; };
+		AFC0B299211766370070A190 /* TestImageUrls.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC0B298211766370070A190 /* TestImageUrls.swift */; };
+		AFC0B29B211768860070A190 /* ImageURLs in Resources */ = {isa = PBXBuildFile; fileRef = AFC0B29A211768860070A190 /* ImageURLs */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AF7A461521177D6500263756 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AF7A461021177D6400263756 /* Visalto.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AFCF83D421139E64000189F2;
+			remoteInfo = Visalto;
+		};
+		AF7A461721177D6500263756 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AF7A461021177D6400263756 /* Visalto.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AFCF83DD21139E64000189F2;
+			remoteInfo = VisaltoTests;
+		};
+		AF7A461B21177D7700263756 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AF7A461021177D6400263756 /* Visalto.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = AFCF83D321139E64000189F2;
+			remoteInfo = Visalto;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AFC0B2902117625D0070A190 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AF7A461A21177D7700263756 /* Visalto.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		AF7A461021177D6400263756 /* Visalto.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Visalto.xcodeproj; path = ../Visalto/Visalto.xcodeproj; sourceTree = "<group>"; };
+		AF7A461D211789CD00263756 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		AFC0B2772117622B0070A190 /* VisaltoShowcase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisaltoShowcase.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFC0B27A2117622B0070A190 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AFC0B27F2117622B0070A190 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AFC0B2812117622C0070A190 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AFC0B2842117622C0070A190 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AFC0B2862117622C0070A190 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AFC0B294211766300070A190 /* ImageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTableViewController.swift; sourceTree = "<group>"; };
+		AFC0B295211766300070A190 /* ImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
+		AFC0B298211766370070A190 /* TestImageUrls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestImageUrls.swift; sourceTree = "<group>"; };
+		AFC0B29A211768860070A190 /* ImageURLs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ImageURLs; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AFC0B2742117622B0070A190 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF7A461921177D7700263756 /* Visalto.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AF7A461121177D6400263756 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AF7A461621177D6500263756 /* Visalto.framework */,
+				AF7A461821177D6500263756 /* VisaltoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AFC0B26E2117622B0070A190 = {
+			isa = PBXGroup;
+			children = (
+				AFC0B2792117622B0070A190 /* VisaltoShowcase */,
+				AFC0B2782117622B0070A190 /* Products */,
+				AF7A461021177D6400263756 /* Visalto.xcodeproj */,
+			);
+			sourceTree = "<group>";
+		};
+		AFC0B2782117622B0070A190 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AFC0B2772117622B0070A190 /* VisaltoShowcase.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AFC0B2792117622B0070A190 /* VisaltoShowcase */ = {
+			isa = PBXGroup;
+			children = (
+				AFC0B27A2117622B0070A190 /* AppDelegate.swift */,
+				AFC0B295211766300070A190 /* ImageTableViewCell.swift */,
+				AF7A461D211789CD00263756 /* StartViewController.swift */,
+				AFC0B294211766300070A190 /* ImageTableViewController.swift */,
+				AFC0B298211766370070A190 /* TestImageUrls.swift */,
+				AFC0B29A211768860070A190 /* ImageURLs */,
+				AFC0B27E2117622B0070A190 /* Main.storyboard */,
+				AFC0B2812117622C0070A190 /* Assets.xcassets */,
+				AFC0B2832117622C0070A190 /* LaunchScreen.storyboard */,
+				AFC0B2862117622C0070A190 /* Info.plist */,
+			);
+			path = VisaltoShowcase;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AFC0B2762117622B0070A190 /* VisaltoShowcase */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AFC0B2892117622C0070A190 /* Build configuration list for PBXNativeTarget "VisaltoShowcase" */;
+			buildPhases = (
+				AFC0B2732117622B0070A190 /* Sources */,
+				AFC0B2742117622B0070A190 /* Frameworks */,
+				AFC0B2752117622B0070A190 /* Resources */,
+				AFC0B2902117625D0070A190 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AF7A461C21177D7700263756 /* PBXTargetDependency */,
+			);
+			name = VisaltoShowcase;
+			productName = VisaltoShowcase;
+			productReference = AFC0B2772117622B0070A190 /* VisaltoShowcase.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AFC0B26F2117622B0070A190 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = "Vladislav Fitc";
+				TargetAttributes = {
+					AFC0B2762117622B0070A190 = {
+						CreatedOnToolsVersion = 9.4;
+					};
+				};
+			};
+			buildConfigurationList = AFC0B2722117622B0070A190 /* Build configuration list for PBXProject "VisaltoShowcase" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AFC0B26E2117622B0070A190;
+			productRefGroup = AFC0B2782117622B0070A190 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = AF7A461121177D6400263756 /* Products */;
+					ProjectRef = AF7A461021177D6400263756 /* Visalto.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				AFC0B2762117622B0070A190 /* VisaltoShowcase */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		AF7A461621177D6500263756 /* Visalto.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Visalto.framework;
+			remoteRef = AF7A461521177D6500263756 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AF7A461821177D6500263756 /* VisaltoTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = VisaltoTests.xctest;
+			remoteRef = AF7A461721177D6500263756 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AFC0B2752117622B0070A190 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFC0B2852117622C0070A190 /* LaunchScreen.storyboard in Resources */,
+				AFC0B2822117622C0070A190 /* Assets.xcassets in Resources */,
+				AFC0B29B211768860070A190 /* ImageURLs in Resources */,
+				AFC0B2802117622B0070A190 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AFC0B2732117622B0070A190 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF7A461E211789CD00263756 /* StartViewController.swift in Sources */,
+				AFC0B299211766370070A190 /* TestImageUrls.swift in Sources */,
+				AFC0B297211766300070A190 /* ImageTableViewCell.swift in Sources */,
+				AFC0B296211766300070A190 /* ImageTableViewController.swift in Sources */,
+				AFC0B27B2117622B0070A190 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AF7A461C21177D7700263756 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Visalto;
+			targetProxy = AF7A461B21177D7700263756 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AFC0B27E2117622B0070A190 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AFC0B27F2117622B0070A190 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AFC0B2832117622C0070A190 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AFC0B2842117622C0070A190 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AFC0B2872117622C0070A190 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AFC0B2882117622C0070A190 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AFC0B28A2117622C0070A190 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3MM327Z8HD;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/VisaltoShowcase",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = VisaltoShowcase/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = fitc.VisaltoShowcase;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AFC0B28B2117622C0070A190 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3MM327Z8HD;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/VisaltoShowcase",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = VisaltoShowcase/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = fitc.VisaltoShowcase;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AFC0B2722117622B0070A190 /* Build configuration list for PBXProject "VisaltoShowcase" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFC0B2872117622C0070A190 /* Debug */,
+				AFC0B2882117622C0070A190 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AFC0B2892117622C0070A190 /* Build configuration list for PBXNativeTarget "VisaltoShowcase" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFC0B28A2117622C0070A190 /* Debug */,
+				AFC0B28B2117622C0070A190 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AFC0B26F2117622B0070A190 /* Project object */;
+}

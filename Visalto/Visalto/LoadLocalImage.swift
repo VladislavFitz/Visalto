@@ -23,6 +23,10 @@ class LoadLocalImage: Operation, LoadImage {
         
     }
     
+    deinit {
+        
+    }
+    
     override func main() {
         
         do {

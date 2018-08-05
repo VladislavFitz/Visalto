@@ -27,6 +27,10 @@ class LoadRemoteImage: AsyncOperation, LoadImage {
         
     }
     
+    deinit {
+        
+    }
+    
     override func main() {
                 
         let urlRequest = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10)

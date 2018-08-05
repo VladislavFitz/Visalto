@@ -8,12 +8,12 @@
 
 import Foundation
 
-final class Visalto {
+public final class Visalto {
     
-    static let shared = Visalto()
+    public static let shared = Visalto()
     
     internal let queue: OperationQueue
-    internal let cache: ImageCache
+    public let cache: ImageCache
     internal let executingOperations: ExecutingOperationsController
         
     private init() {
@@ -36,18 +36,25 @@ final class Visalto {
                    completionQueue: DispatchQueue = .main,
                    completion: @escaping (Result<UIImage>) -> Void) {
         
-        if let existingOperation = executingOperations.operation(for: url),
-            existingOperation.operation.isReady || existingOperation.operation.isExecuting {
-            return
-        }
+//        if let existingOperation = executingOperations.operation(for: url),
+//            existingOperation.operation.isReady || existingOperation.operation.isExecuting {
+//            return
+//        }
         
         let effectiveURL: URL
         
         switch cache.load(for: url) {
-        case .memoryHit(let image):
-            completionQueue.async {
-                completion(.success(image))
+        case .memoryHit(let imageData):
+            
+            let imageFromData = ImageFromData(data: imageData)
+            
+            imageFromData.completionBlock = {
+                completionQueue.async {
+                    completion(imageFromData.result!)
+                }
             }
+            
+            queue.addOperation(imageFromData)
             return
             
         case .diskHit(let fileURL):
@@ -94,6 +101,7 @@ final class Visalto {
     
     public func cancelLoading(for url: URL) {
         executingOperations.operation(for: url)?.cancel()
+        executingOperations.removeOperation(for: url)
     }
     
     /**
@@ -102,6 +110,7 @@ final class Visalto {
     
     public func cancelAll() {
         queue.cancelAllOperations()
+        executingOperations.operationsByURL.removeAll()
     }
     
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-internal final class ImageCache {
+public final class ImageCache {
     
     private let storage: NSCache<NSURL, NSData>
     private let lock: NSObject
@@ -17,6 +17,7 @@ internal final class ImageCache {
     init(useDisk: Bool = true) {
         storage = NSCache()
         lock = NSObject()
+        storage.countLimit = 5
         diskCache = useDisk ? try? DiskCache() : .none
     }
     
@@ -32,9 +33,9 @@ internal final class ImageCache {
         objc_sync_enter(lock)
         defer { objc_sync_exit(lock) }
         
-        if let inMemoryCachedData = storage.object(forKey: key as NSURL), let image = UIImage(data: inMemoryCachedData as Data) {
+        if let inMemoryCachedData = storage.object(forKey: key as NSURL) {
             
-            return .memoryHit(image)
+            return .memoryHit(inMemoryCachedData as Data)
             
         } else if let diskCacheURL = diskCache?.fileURL(for: key) {
             
@@ -74,7 +75,7 @@ internal final class ImageCache {
         diskCache?.remove(forKey: key)
     }
     
-    func clear() {
+    public func clear() {
         objc_sync_enter(lock)
         defer { objc_sync_exit(lock) }
         
@@ -87,7 +88,7 @@ internal final class ImageCache {
 extension ImageCache {
     
     enum CacheAccessResult {
-        case memoryHit(UIImage)
+        case memoryHit(Data)
         case diskHit(URL)
         case miss
     }

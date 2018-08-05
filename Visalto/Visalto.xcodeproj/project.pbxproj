@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AFAE8D75211794E400384A4B /* ImageFromData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAE8D74211794E400384A4B /* ImageFromData.swift */; };
 		AFC0B219211507150070A190 /* LoadImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC0B218211507150070A190 /* LoadImageFactory.swift */; };
 		AFC0B21B211660610070A190 /* ExecutingOperationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC0B21A211660610070A190 /* ExecutingOperationsController.swift */; };
 		AFC0B21D21170C0C0070A190 /* DiskCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC0B21C21170C0C0070A190 /* DiskCache.swift */; };
@@ -52,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AFAE8D74211794E400384A4B /* ImageFromData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFromData.swift; sourceTree = "<group>"; };
 		AFC0B218211507150070A190 /* LoadImageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadImageFactory.swift; sourceTree = "<group>"; };
 		AFC0B21A211660610070A190 /* ExecutingOperationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExecutingOperationsController.swift; sourceTree = "<group>"; };
 		AFC0B21C21170C0C0070A190 /* DiskCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskCache.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				AFC0B21C21170C0C0070A190 /* DiskCache.swift */,
 				AFCF83FB2113A20C000189F2 /* ImageCache.swift */,
 				AFCF84212113B74C000189F2 /* LoadImage.swift */,
+				AFAE8D74211794E400384A4B /* ImageFromData.swift */,
 				AFC0B218211507150070A190 /* LoadImageFactory.swift */,
 				AFCF83F72113A1B5000189F2 /* LoadRemoteImage.swift */,
 				AFCF83FD2113A3FE000189F2 /* LoadLocalImage.swift */,
@@ -319,6 +322,7 @@
 				AFC0B21D21170C0C0070A190 /* DiskCache.swift in Sources */,
 				AFCF83F82113A1B5000189F2 /* LoadRemoteImage.swift in Sources */,
 				AFC0B21B211660610070A190 /* ExecutingOperationsController.swift in Sources */,
+				AFAE8D75211794E400384A4B /* ImageFromData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,7 +10,7 @@ import Foundation
 
 internal class ExecutingOperationsController {
     
-    private var operationsByURL: [URL: LoadImage]
+    internal var operationsByURL: [URL: LoadImage]
     private let lock: NSObject
 
     init() {

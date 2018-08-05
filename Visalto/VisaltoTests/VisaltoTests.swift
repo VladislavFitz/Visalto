@@ -93,4 +93,24 @@ class VisaltoTests: XCTestCase {
 
     }
     
+    func testLoadBigImage() {
+        
+        let url = URL(string: "https://images.pexels.com/photos/672143/pexels-photo-672143.jpeg")!
+
+        measure {
+            
+            guard let loadImage = LoadRemoteImage(url: url) else { return }
+            
+            let queue = OperationQueue()
+            
+            queue.addOperation(loadImage)
+            
+            loadImage.waitUntilFinished()
+
+        }
+        
+        
+        
+    }
+    
 }
