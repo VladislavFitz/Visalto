@@ -48,5 +48,30 @@ class VisaltoTests: XCTestCase {
         
         wait(for: [exp], timeout: 3)
     }
+    
+    func testMultipleImagesLoading() {
+        
+        let exp = expectation(description: "Load all remote test images")
+        
+        var loadedURLs = Set(RemoteTestImages.urls)
+        
+        for (index, url) in RemoteTestImages.urls.enumerated() {
+            
+            debugPrint("Start loading image \(index)")
+            
+            Visalto.shared.loadImage(with: url) { result in
+                debugPrint("Finish loading image for \(index)")
+                loadedURLs.remove(url)
+                if loadedURLs.isEmpty {
+                    exp.fulfill()
+                }
+            }
+            
+        }
+        
+        wait(for: [exp], timeout: 10)
+        
+    }
+
         
 }
