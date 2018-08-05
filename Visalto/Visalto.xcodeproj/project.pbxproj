@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		AFC0B219211507150070A190 /* LoadImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC0B218211507150070A190 /* LoadImageFactory.swift */; };
 		AFC0B21B211660610070A190 /* ExecutingOperationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC0B21A211660610070A190 /* ExecutingOperationsController.swift */; };
+		AFC0B21D21170C0C0070A190 /* DiskCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC0B21C21170C0C0070A190 /* DiskCache.swift */; };
+		AFC0B21F211737FB0070A190 /* DiskCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC0B21E211737FB0070A190 /* DiskCacheTests.swift */; };
 		AFCF83DE21139E64000189F2 /* Visalto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFCF83D421139E64000189F2 /* Visalto.framework */; };
 		AFCF83E521139E64000189F2 /* Visalto.h in Headers */ = {isa = PBXBuildFile; fileRef = AFCF83D721139E64000189F2 /* Visalto.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AFCF83F121139E9F000189F2 /* Visalto.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCF83F021139E9F000189F2 /* Visalto.swift */; };
@@ -52,6 +54,8 @@
 /* Begin PBXFileReference section */
 		AFC0B218211507150070A190 /* LoadImageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadImageFactory.swift; sourceTree = "<group>"; };
 		AFC0B21A211660610070A190 /* ExecutingOperationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExecutingOperationsController.swift; sourceTree = "<group>"; };
+		AFC0B21C21170C0C0070A190 /* DiskCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskCache.swift; sourceTree = "<group>"; };
+		AFC0B21E211737FB0070A190 /* DiskCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskCacheTests.swift; sourceTree = "<group>"; };
 		AFCF83D421139E64000189F2 /* Visalto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Visalto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFCF83D721139E64000189F2 /* Visalto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Visalto.h; sourceTree = "<group>"; };
 		AFCF83D821139E64000189F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -125,6 +129,7 @@
 				AFCF83D721139E64000189F2 /* Visalto.h */,
 				AFCF83D821139E64000189F2 /* Info.plist */,
 				AFCF83F021139E9F000189F2 /* Visalto.swift */,
+				AFC0B21C21170C0C0070A190 /* DiskCache.swift */,
 				AFCF83FB2113A20C000189F2 /* ImageCache.swift */,
 				AFCF84212113B74C000189F2 /* LoadImage.swift */,
 				AFC0B218211507150070A190 /* LoadImageFactory.swift */,
@@ -146,6 +151,7 @@
 				AFCF84012113A59B000189F2 /* LoadRemoteImageTests.swift */,
 				AFCF84032113A5A5000189F2 /* LoadLocalImageTests.swift */,
 				AFCF84052113A5AE000189F2 /* ImageCacheTests.swift */,
+				AFC0B21E211737FB0070A190 /* DiskCacheTests.swift */,
 				AFCF83E421139E64000189F2 /* Info.plist */,
 				AFCF84122113AABA000189F2 /* Bundle+Convenience.swift */,
 				AFCF841B2113B242000189F2 /* ImageURLs */,
@@ -310,6 +316,7 @@
 				AFCF83F321139EE4000189F2 /* AsyncOperation.swift in Sources */,
 				AFCF83F121139E9F000189F2 /* Visalto.swift in Sources */,
 				AFC0B219211507150070A190 /* LoadImageFactory.swift in Sources */,
+				AFC0B21D21170C0C0070A190 /* DiskCache.swift in Sources */,
 				AFCF83F82113A1B5000189F2 /* LoadRemoteImage.swift in Sources */,
 				AFC0B21B211660610070A190 /* ExecutingOperationsController.swift in Sources */,
 			);
@@ -320,6 +327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFCF84002113A54C000189F2 /* VisaltoTests.swift in Sources */,
+				AFC0B21F211737FB0070A190 /* DiskCacheTests.swift in Sources */,
 				AFCF84152113ABBF000189F2 /* LocalTestImages.swift in Sources */,
 				AFCF84022113A59B000189F2 /* LoadRemoteImageTests.swift in Sources */,
 				AFCF841E2113B53A000189F2 /* RemoteTestImages.swift in Sources */,

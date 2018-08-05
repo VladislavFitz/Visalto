@@ -19,11 +19,12 @@ final class Visalto {
     private init() {
         queue = OperationQueue()
         queue.qualityOfService = .utility
-        cache = ImageCache()
+        cache = ImageCache(useDisk: true)
         executingOperations = ExecutingOperationsController()
     }
 
     /**
+     Load image for web or file URL
      - parameter url: URL to image
      - parameter qos: Quality of service of image loading
      - parameter completionQueue: Dispatch queue in which completion will be called
@@ -40,15 +41,23 @@ final class Visalto {
             return
         }
         
-        if let cachedImage = cache.load(for: url) {
-            
+        let effectiveURL: URL
+        
+        switch cache.load(for: url) {
+        case .memoryHit(let image):
             completionQueue.async {
-                completion(.success(cachedImage))
+                completion(.success(image))
             }
+            return
             
+        case .diskHit(let fileURL):
+            effectiveURL = fileURL
+            
+        case .miss:
+            effectiveURL = url
         }
         
-        let loadImage = LoadImageFactory.loadImage(for: url)
+        let loadImage = LoadImageFactory.loadImage(for: effectiveURL)
         
         executingOperations.add(loadImage)
         
@@ -77,6 +86,19 @@ final class Visalto {
         queue.addOperation(loadImage.operation)
         
     }
+    
+    /**
+     Cancel launched or scheduled operation
+     - parameter url: URL to image
+     */
+    
+    public func cancelLoading(for url: URL) {
+        executingOperations.operation(for: url)?.cancel()
+    }
+    
+    /**
+     Cancels all launched and scheduled image loading operations
+     */
     
     public func cancelAll() {
         queue.cancelAllOperations()

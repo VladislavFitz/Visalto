@@ -8,35 +8,62 @@
 
 import Foundation
 
-final class ImageCache {
+internal final class ImageCache {
     
-    private let storage: NSCache<NSURL, UIImage>
+    private let storage: NSCache<NSURL, NSData>
     private let lock: NSObject
+    private let diskCache: DiskCache?
     
-    init() {
+    init(useDisk: Bool = true) {
         storage = NSCache()
         lock = NSObject()
+        diskCache = useDisk ? try? DiskCache() : .none
     }
     
     func contains(_ key: URL) -> Bool {
         objc_sync_enter(lock)
         defer { objc_sync_exit(lock) }
         
-        return storage.object(forKey: key as NSURL) != nil
+        return storage.object(forKey: key as NSURL) != .none
     }
     
-    func load(for key: URL) -> UIImage? {
+    func load(for key: URL) -> CacheAccessResult {
+        
         objc_sync_enter(lock)
         defer { objc_sync_exit(lock) }
         
-        return storage.object(forKey: key as NSURL)
+        if let inMemoryCachedData = storage.object(forKey: key as NSURL), let image = UIImage(data: inMemoryCachedData as Data) {
+            
+            return .memoryHit(image)
+            
+        } else if let diskCacheURL = diskCache?.fileURL(for: key) {
+            
+            return .diskHit(diskCacheURL)
+            
+        } else {
+            
+            return .miss
+            
+        }
+        
     }
     
     func store(_ image: UIImage, forKey key: URL) {
+        
+        guard let jpegRepresentation = UIImageJPEGRepresentation(image, 1) else { return }
+        
+        self.store(jpegRepresentation, forKey: key)
+        
+    }
+
+    
+    func store(_ data: Data, forKey key: URL) {
         objc_sync_enter(lock)
         defer { objc_sync_exit(lock) }
         
-        storage.setObject(image, forKey: key as NSURL)
+        storage.setObject(data as NSData, forKey: key as NSURL)
+        diskCache?.store(data, forKey: key)
+        
     }
     
     func remove(for key: URL) {
@@ -44,6 +71,7 @@ final class ImageCache {
         defer { objc_sync_exit(lock) }
         
         storage.removeObject(forKey: key as NSURL)
+        diskCache?.remove(forKey: key)
     }
     
     func clear() {
@@ -51,6 +79,17 @@ final class ImageCache {
         defer { objc_sync_exit(lock) }
         
         storage.removeAllObjects()
+        diskCache?.clear()
+    }
+    
+}
+
+extension ImageCache {
+    
+    enum CacheAccessResult {
+        case memoryHit(UIImage)
+        case diskHit(URL)
+        case miss
     }
     
 }

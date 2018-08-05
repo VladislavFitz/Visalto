@@ -47,7 +47,6 @@ open class AsyncOperation: Operation {
             return
         }
         
-        
         main()
         state = .executing
         

@@ -28,11 +28,7 @@ class LoadRemoteImage: AsyncOperation, LoadImage {
     }
     
     override func main() {
-        
-        if isCancelled {
-            return
-        }
-        
+                
         let urlRequest = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10)
         
         let task = urlSession.dataTask(with: urlRequest) { [weak self] (data, respose, error) in

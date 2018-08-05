@@ -18,12 +18,7 @@ class VisaltoTests: XCTestCase {
     override func tearDown() {
         super.tearDown()
     }
-    
-    func testLoadMutlipleImages() {
         
-        
-    }
-    
     func testLoadImage() {
         
         let exp = expectation(description: "Load eiffel tower image from web")
@@ -53,16 +48,14 @@ class VisaltoTests: XCTestCase {
         
         let exp = expectation(description: "Load all remote test images")
         
-        var loadedURLs = Set(RemoteTestImages.urls)
-        
-        for (index, url) in RemoteTestImages.urls.enumerated() {
-            
-            debugPrint("Start loading image \(index)")
+        var loadedImagesURLs = Set<URL>()
+        let urls = RemoteTestImages.urls
+
+        for url in urls {
             
             Visalto.shared.loadImage(with: url) { result in
-                debugPrint("Finish loading image for \(index)")
-                loadedURLs.remove(url)
-                if loadedURLs.isEmpty {
+                loadedImagesURLs.insert(url)
+                if loadedImagesURLs.count == urls.count {
                     exp.fulfill()
                 }
             }
@@ -72,6 +65,32 @@ class VisaltoTests: XCTestCase {
         wait(for: [exp], timeout: 10)
         
     }
-
+    
+    func testCancellation() {
         
+        let exp = expectation(description: "Load remote test images")
+        
+        let urls = RemoteTestImages.urls
+        
+        var loadedImagesURLs = Set<URL>()
+        
+        for url in urls {
+            
+            Visalto.shared.loadImage(with: url) { result in
+                loadedImagesURLs.insert(url)
+                if loadedImagesURLs.count == urls.count - 1 {
+                    exp.fulfill()
+                }
+            }
+            
+            Visalto.shared.cancelLoading(for: urls[urls.endIndex - 2])
+            
+        }
+        
+        wait(for: [exp], timeout: 10)
+        
+        XCTAssertFalse(loadedImagesURLs.contains(urls[urls.endIndex - 2]))
+
+    }
+    
 }
