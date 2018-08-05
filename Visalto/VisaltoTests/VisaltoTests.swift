@@ -13,17 +13,22 @@ class VisaltoTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+    }
+    
+    func testLoadMutlipleImages() {
+        
+        
     }
     
     func testLoadImage() {
         
-        let url = LocalTestImages.urls[0]
+        let exp = expectation(description: "Load eiffel tower image from web")
+        
+        let url = LocalTestImages.urls[1]
         
         Visalto.shared.loadImage(with: url) { result in
             
@@ -35,11 +40,13 @@ class VisaltoTests: XCTestCase {
                 XCTFail("Test image wasn't loaded due to error: \(error.localizedDescription)")
             }
             
-            XCTAssertNil(Visalto.shared.executingLoadImage(for: url), "Operation wasn't destroyed after completion")
-        
+            XCTAssertNil(Visalto.shared.executingOperations.operation(for: url), "Operation wasn't destroyed after completion")
+            exp.fulfill()
         }
         
-        XCTAssertNotNil(Visalto.shared.executingLoadImage(for: url), "Operation was destroyed before completion")
+        XCTAssertNotNil(Visalto.shared.executingOperations.operation(for: url), "Operation was destroyed before completion")
+        
+        wait(for: [exp], timeout: 3)
     }
-    
+        
 }

@@ -14,22 +14,16 @@ final class Visalto {
     
     internal let queue: OperationQueue
     internal let cache: ImageCache
-    
-    private var loadOperationsByURL: [URL: LoadImage]
-    
+    internal let executingOperations: ExecutingOperationsController
+        
     private init() {
         queue = OperationQueue()
         queue.qualityOfService = .utility
         cache = ImageCache()
-        loadOperationsByURL = [:]
+        executingOperations = ExecutingOperationsController()
     }
-    
-    public func executingLoadImage(for url: URL) -> LoadImage? {
-        return loadOperationsByURL[url]
-    }
-    
+
     /**
-     - returns: load image operation
      - parameter url: URL to image
      - parameter qos: Quality of service of image loading
      - parameter completionQueue: Dispatch queue in which completion will be called
@@ -39,8 +33,12 @@ final class Visalto {
     public func loadImage(with url: URL,
                    qos: QualityOfService = .userInitiated,
                    completionQueue: DispatchQueue = .main,
-                   completion: @escaping (Result<UIImage>) -> Void) -> LoadImage? {
+                   completion: @escaping (Result<UIImage>) -> Void) {
         
+        if let existingOperation = executingOperations.operation(for: url),
+            existingOperation.operation.isReady || existingOperation.operation.isExecuting {
+            return
+        }
         
         if let cachedImage = cache.load(for: url) {
             
@@ -48,30 +46,26 @@ final class Visalto {
                 completion(.success(cachedImage))
             }
             
-            return .none
-            
         }
         
-        let loadImage: LoadImage
+        let loadImage = LoadImageFactory.loadImage(for: url)
         
-        if url.isFileURL {
-            loadImage = LoadLocalImage(url: url)!
-        } else {
-            loadImage = LoadRemoteImage(url: url)!
-        }
+        executingOperations.add(loadImage)
         
         loadImage.operation.qualityOfService = qos
         
         loadImage.operation.completionBlock = { [weak self] in
             
-            self?.loadOperationsByURL.removeValue(forKey: url)
+            guard let strongSelf = self else { return }
+            
+            strongSelf.executingOperations.removeOperation(for: url)
             
             guard let result = loadImage.result else {
                 return
             }
             
             if case .success(let image) = result {
-                self?.cache.store(image, forKey: url)
+                strongSelf.cache.store(image, forKey: url)
             }
             
             completionQueue.async {
@@ -79,12 +73,8 @@ final class Visalto {
             }
             
         }
-        
-        loadOperationsByURL[url] = loadImage
-        
+
         queue.addOperation(loadImage.operation)
-        
-        return loadImage
         
     }
     

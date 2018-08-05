@@ -27,6 +27,10 @@ class LoadLocalImage: Operation, LoadImage {
         
         do {
             
+            if isCancelled {
+                return
+            }
+            
             let data = try Data(contentsOf: url)
             
             if isCancelled {

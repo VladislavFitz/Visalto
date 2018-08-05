@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AFC0B219211507150070A190 /* LoadImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC0B218211507150070A190 /* LoadImageFactory.swift */; };
+		AFC0B21B211660610070A190 /* ExecutingOperationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC0B21A211660610070A190 /* ExecutingOperationsController.swift */; };
 		AFCF83DE21139E64000189F2 /* Visalto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFCF83D421139E64000189F2 /* Visalto.framework */; };
 		AFCF83E521139E64000189F2 /* Visalto.h in Headers */ = {isa = PBXBuildFile; fileRef = AFCF83D721139E64000189F2 /* Visalto.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AFCF83F121139E9F000189F2 /* Visalto.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCF83F021139E9F000189F2 /* Visalto.swift */; };
@@ -48,6 +50,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AFC0B218211507150070A190 /* LoadImageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadImageFactory.swift; sourceTree = "<group>"; };
+		AFC0B21A211660610070A190 /* ExecutingOperationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExecutingOperationsController.swift; sourceTree = "<group>"; };
 		AFCF83D421139E64000189F2 /* Visalto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Visalto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFCF83D721139E64000189F2 /* Visalto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Visalto.h; sourceTree = "<group>"; };
 		AFCF83D821139E64000189F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -123,8 +127,10 @@
 				AFCF83F021139E9F000189F2 /* Visalto.swift */,
 				AFCF83FB2113A20C000189F2 /* ImageCache.swift */,
 				AFCF84212113B74C000189F2 /* LoadImage.swift */,
+				AFC0B218211507150070A190 /* LoadImageFactory.swift */,
 				AFCF83F72113A1B5000189F2 /* LoadRemoteImage.swift */,
 				AFCF83FD2113A3FE000189F2 /* LoadLocalImage.swift */,
+				AFC0B21A211660610070A190 /* ExecutingOperationsController.swift */,
 				AFCF83F92113A1CA000189F2 /* ImageLoadingError.swift */,
 			);
 			path = Visalto;
@@ -303,7 +309,9 @@
 				AFCF83FA2113A1CA000189F2 /* ImageLoadingError.swift in Sources */,
 				AFCF83F321139EE4000189F2 /* AsyncOperation.swift in Sources */,
 				AFCF83F121139E9F000189F2 /* Visalto.swift in Sources */,
+				AFC0B219211507150070A190 /* LoadImageFactory.swift in Sources */,
 				AFCF83F82113A1B5000189F2 /* LoadRemoteImage.swift in Sources */,
+				AFC0B21B211660610070A190 /* ExecutingOperationsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

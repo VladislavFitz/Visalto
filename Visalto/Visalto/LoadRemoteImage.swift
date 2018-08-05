@@ -13,21 +13,29 @@ class LoadRemoteImage: AsyncOperation, LoadImage {
     let url: URL
     var result: Result<UIImage>?
     
+    private let urlSession: URLSession
     private var task: URLSessionDataTask?
     
-    init?(url: URL) {
+    init?(url: URL, urlSession: URLSession = .shared) {
         
         guard !url.isFileURL else {
             return nil
         }
         
         self.url = url
+        self.urlSession = urlSession
         
     }
     
     override func main() {
         
-        let task = URLSession.shared.dataTask(with: url) { [weak self] (data, respose, error) in
+        if isCancelled {
+            return
+        }
+        
+        let urlRequest = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10)
+        
+        let task = urlSession.dataTask(with: urlRequest) { [weak self] (data, respose, error) in
             
             guard let strongSelf = self else { return }
             
@@ -49,7 +57,6 @@ class LoadRemoteImage: AsyncOperation, LoadImage {
                 }
                                 
                 strongSelf.result = .success(image)
-                
             }
             
         }
