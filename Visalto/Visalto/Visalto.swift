@@ -13,8 +13,8 @@ public final class Visalto {
     public static let shared = Visalto()
     
     let queue: OperationQueue
-    public var urlSession: URLSession
-    private let cache: ImageCache
+    var urlSession: URLSession
+    let cache: ImageCache
     let executingOperations: ExecutingOperationsController
     
     public var qos: QualityOfService {
@@ -25,6 +25,18 @@ public final class Visalto {
         
         set {
             queue.qualityOfService = newValue
+        }
+        
+    }
+    
+    public var maxConcurrentLoadingsCount: Int {
+        
+        get {
+            return queue.maxConcurrentOperationCount
+        }
+        
+        set {
+            queue.maxConcurrentOperationCount = newValue
         }
         
     }
@@ -41,12 +53,29 @@ public final class Visalto {
         
     }
     
+    public func setURLSession(_ urlSession: URLSession) {
+        
+        // Cancel all executing/waiting load remote image operations
+        queue
+            .operations
+            .compactMap({ $0 as? LoadRemoteImage })
+            .forEach
+        {
+            $0.cancel()
+        }
+        
+        self.urlSession = urlSession
+        
+    }
+    
     private init() {
+        
         queue = OperationQueue()
         queue.qualityOfService = .userInitiated
         urlSession = .shared
         cache = ImageCache(useDisk: true)
         executingOperations = ExecutingOperationsController()
+        
     }
     
     /**
