@@ -25,3 +25,7 @@ Visalto.shared.loadImage(with: url, completionQueue: .main) { result in
 ```
 Visalto.shared.cancelLoading(for: url)
 ```
+
+There is an associated project VisaltoShowcase which demonstrates using of the framework.
+
+![alt Visalto](Visalto/showcase.png)
