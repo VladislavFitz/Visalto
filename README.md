@@ -23,7 +23,7 @@ Visalto.shared.loadImage(with: url, completionQueue: .main) { result in
 }
 ```
 
-For cancelation of operation just call cancelLoading with url which was used while operation creation
+For cancelation of operation just call cancelLoading with the url which was used while operation creation
 
 ```
 Visalto.shared.cancelLoading(for: url)
