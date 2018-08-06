@@ -2,7 +2,7 @@
 
 ![alt Visalto](Visalto/logo.png)
 
-Visalto is a lightweight framework for asynchronous image loading from the web or disk. 
+Visalto is a lightweight framework for asynchronous image loading from the web or a disk. 
 It provides in-memory and disk caching functionalities.
 The basic image loading looks as follows
 
@@ -24,7 +24,7 @@ Visalto.shared.loadImage(with: url, completionQueue: .main) { result in
 ```
 The same interface may be used for loading an image from the disk and from the web.
 
-For cancellation of an operation just call `cancelLoading` with the url which was used while its creation.
+For cancellation of an operation just call `cancelLoading` with the url that was used for its creation.
 
 ```
 Visalto.shared.cancelLoading(for: url)
@@ -32,7 +32,7 @@ Visalto.shared.cancelLoading(for: url)
 
 ## Possible customizations
 
-There are numerous parameters available for customization of image loading behaviour.
+There are numerous parameters available for the customization of image loading behaviour.
 
 Set your own custom URL session for remote image downloading.
 
@@ -74,6 +74,6 @@ Visalto.shared.loadImage(with: url,
                          completionQueue: .main) { result in ... }
 ```
 
-An associated project VisaltoShowcase demonstrates the usage of the framework.
+An associated project - VisaltoShowcase - demonstrates the usage of the framework.
 
 ![alt Visalto](Visalto/showcase.png)
