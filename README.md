@@ -1,5 +1,7 @@
 # Visalto
 
+![alt Visalto](Visalto/logo.png)
+
 Visalto is lightweight framework for asynchronous image loading from web or disk URL. 
 It uses memory and disk caching of images.
 
