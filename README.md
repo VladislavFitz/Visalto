@@ -3,8 +3,8 @@
 ![alt Visalto](Visalto/logo.png)
 
 Visalto is a lightweight framework for asynchronous image loading from the web or disk. 
-It uses in-memory and disk caching.
-Basic image loading looks as follows:
+It provides in-memory and disk caching functionalities.
+The basic image loading looks as follows
 
 ```
 let url = URL(string: “example.com/test.jpg”)!
@@ -22,9 +22,9 @@ Visalto.shared.loadImage(with: url, completionQueue: .main) { result in
 
 }
 ```
-The same interface is used for loading an image from the disk and from the web.
+The same interface may be used for loading an image from the disk and from the web.
 
-For cancelation of operation just call `cancelLoading` with the url which was used while operation creation
+For cancellation of an operation just call `cancelLoading` with the url which was used while its creation.
 
 ```
 Visalto.shared.cancelLoading(for: url)
@@ -32,9 +32,10 @@ Visalto.shared.cancelLoading(for: url)
 
 ## Possible customizations
 
-There are a lot of parameters available for customization of image loading behaviour.
+There are numerous parameters available for customization of image loading behaviour.
 
-You can set your own URL session which will be used for remote image downloading.
+Set your own custom URL session for remote image downloading.
+
 ```
 let myCustomURLSession: URLSession = ...
 Visalto.shared.setURLSession(myCustomURLSession))
@@ -47,16 +48,18 @@ Visalto.shared.maxConcurrentLoadingsCount = 10
 ```
 
 Set quality of service of image loading queue
+
 ```
 Visalto.shared.qualityOfService = .userInteractive
 ```
 
 Turn on/off a disk cache
+
 ```
 Visalto.shared.useDiskCache = false
 ```
 
-It is also possible to customize image loading operation by setting 
+It is also possible to customize each image loading operation by providing 
 * quality of service
 * priority in the queue
 * url request cache policy 
@@ -71,6 +74,6 @@ Visalto.shared.loadImage(with: url,
                          completionQueue: .main) { result in ... }
 ```
 
-There is an associated project VisaltoShowcase which demonstrates the usage of the framework.
+An associated project VisaltoShowcase demonstrates the usage of the framework.
 
 ![alt Visalto](Visalto/showcase.png)
