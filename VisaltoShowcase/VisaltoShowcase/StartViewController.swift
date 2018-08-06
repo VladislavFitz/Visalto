@@ -38,9 +38,10 @@ private extension StartViewController {
     func configureStartButton() {
         
         let nextButton = UIButton(type: .custom)
-        nextButton.setTitleColor(.blue, for: .normal)
+        nextButton.setTitleColor(UIColor(named: "appleBlue"), for: .normal)
         nextButton.translatesAutoresizingMaskIntoConstraints = false
         nextButton.setTitle("Start", for: .normal)
+        nextButton.titleLabel?.font = .systemFont(ofSize: 25)
         nextButton.addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
         view.addSubview(nextButton)
         

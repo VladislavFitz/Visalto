@@ -29,7 +29,7 @@ class ImageTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-        activityIndicator.color = .blue
+        activityIndicator.color = UIColor(named: "appleBlue")
         activityIndicator.hidesWhenStopped = true
         activityIndicator.stopAnimating()
         
