@@ -70,6 +70,7 @@ class ImageTableViewController: UITableViewController {
 private extension ImageTableViewController {
     
     func configure() {
+        title = "Visalto showcase"
         tableView.register(ImageTableViewCell.self, forCellReuseIdentifier: imageCellidentifier)
     }
     

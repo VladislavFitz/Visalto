@@ -15,8 +15,7 @@ class StartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
-        
+        configure()
         configureStartButton()
         configureDropCacheButton()
 
@@ -34,6 +33,10 @@ class StartViewController: UIViewController {
 }
 
 private extension StartViewController {
+    
+    func configure() {
+        view.backgroundColor = .white
+    }
     
     func configureStartButton() {
         
