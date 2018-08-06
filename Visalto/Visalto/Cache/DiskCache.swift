@@ -139,14 +139,14 @@ final class DiskCache {
         objc_sync_enter(lock)
         defer { objc_sync_exit(lock) }
         
-        urlToFileMap.removeAll()
-        fileCounter = 0
-        
         for fileID in urlToFileMap.values {
             let fileURL = self.fileURL(forFileWithID: fileID)
             try? fileManager.removeItem(at: fileURL)
         }
         
+        urlToFileMap.removeAll()
+        fileCounter = 0
+    
         storeState()
         
     }
