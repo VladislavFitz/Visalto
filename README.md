@@ -55,7 +55,12 @@ Turn on/off a disk cache
 Visalto.shared.useDiskCache = false
 ```
 
-It is also possible to customize image loading operation by setting the quality of service, priority in the queue, url request cache policy and timeout interval
+It is also possible to customize image loading operation by setting 
+* quality of service
+* priority in the queue
+* url request cache policy 
+* url request timeout interval
+
 ```
 Visalto.shared.loadImage(with: url,
                          qos: .userInteractive,
