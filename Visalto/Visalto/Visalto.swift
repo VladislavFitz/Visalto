@@ -17,7 +17,7 @@ public final class Visalto {
     let cache: ImageCache
     let executingOperations: ExecutingOperationsController
     
-    public var qos: QualityOfService {
+    public var qualityOfService: QualityOfService {
         
         get {
             return queue.qualityOfService
@@ -28,6 +28,10 @@ public final class Visalto {
         }
         
     }
+    
+    /**
+     Max concurrent image loading operations on the queue
+    */
     
     public var maxConcurrentLoadingsCount: Int {
         
@@ -41,6 +45,11 @@ public final class Visalto {
         
     }
     
+    /**
+     Defines if loaded images are stored on the disk.
+     If one sets 'false' all images already stored on the disk cache will be removed.
+    */
+    
     public var useDiskCache: Bool {
         
         get {
@@ -53,9 +62,14 @@ public final class Visalto {
         
     }
     
+    /**
+     Replace existing url session by the external one.
+     All the executing load remote image operations on previous session will be cancelled.
+     */
+    
     public func setURLSession(_ urlSession: URLSession) {
         
-        // Cancel all executing/waiting load remote image operations
+        // Cancel all executing/waiting load remote image operations on previous session
         queue
             .operations
             .compactMap({ $0 as? LoadRemoteImage })
@@ -83,6 +97,8 @@ public final class Visalto {
      - parameter url: URL to image
      - parameter qos: Quality of service of load image operation. Default: .userInitiated
      - parameter queuePriority: Priority in queue of load image operation. Default: .normal
+     - parameter cachePolicy: URL request cache policy for load remote image operation. Default: .useProtocolCachePolicy
+     - parameter timeoutInterval: Timeout interval for load remote image operation. Default: 10
      - parameter completionQueue: Dispatch queue in which completion will be called
      - parameter completion: Callback returning result of load image operation
     */
@@ -90,6 +106,8 @@ public final class Visalto {
     public func loadImage(with url: URL,
                    qos: QualityOfService = .userInitiated,
                    queuePriority: Operation.QueuePriority = .normal,
+                   cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
+                   timeoutInterval: TimeInterval = 10,
                    completionQueue: DispatchQueue = .main,
                    completion: @escaping (Result<UIImage>) -> Void) {
         
@@ -116,7 +134,10 @@ public final class Visalto {
             loadImage = LoadLocalImage(url: url)!
             
         case .miss:
-            loadImage = LoadRemoteImage(url: url, urlSession: urlSession)!
+            loadImage = LoadRemoteImage(url: url,
+                                        urlSession: urlSession,
+                                        cachePolicy: cachePolicy,
+                                        timeoutInterval: timeoutInterval)!
         }
         
         executingOperations.add(loadImage, for: url)

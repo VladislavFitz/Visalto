@@ -47,7 +47,7 @@ class ImageTableViewController: UITableViewController {
         
         let url = urls[indexPath.row]
         imageCell.imageURL = url
-        
+                
         Visalto.shared.loadImage(with: url, completionQueue: .main) { result in
             
             guard imageCell.imageURL == url else { return }

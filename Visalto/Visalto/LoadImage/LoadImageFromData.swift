@@ -11,8 +11,8 @@ import Foundation
 class LoadImageFromData: Operation, LoadImage {
     
     let url: URL
-    let data: Data
     var result: Result<UIImage>?
+    private let data: Data
     
     init(url: URL, data: Data) {
         self.url = url

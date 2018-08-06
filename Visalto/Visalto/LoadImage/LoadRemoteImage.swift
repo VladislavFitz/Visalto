@@ -15,8 +15,13 @@ class LoadRemoteImage: AsyncOperation, LoadImage {
     
     private let urlSession: URLSession
     private weak var task: URLSessionDataTask?
+    private let cachePolicy: URLRequest.CachePolicy
+    private let timeoutInterval: TimeInterval
     
-    init?(url: URL, urlSession: URLSession = .shared) {
+    init?(url: URL,
+          urlSession: URLSession = .shared,
+          cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
+          timeoutInterval: TimeInterval = 10) {
         
         guard !url.isFileURL else {
             return nil
@@ -24,12 +29,16 @@ class LoadRemoteImage: AsyncOperation, LoadImage {
         
         self.url = url
         self.urlSession = urlSession
+        self.cachePolicy = cachePolicy
+        self.timeoutInterval = timeoutInterval
         
     }
         
     override func main() {
                 
-        let urlRequest = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10)
+        let urlRequest = URLRequest(url: url,
+                                    cachePolicy: cachePolicy,
+                                    timeoutInterval: timeoutInterval)
         
         let task = urlSession.dataTask(with: urlRequest) { [weak self] (data, respose, error) in
             
