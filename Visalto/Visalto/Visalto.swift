@@ -14,7 +14,7 @@ public final class Visalto {
     
     let queue: OperationQueue
     public var urlSession: URLSession
-    public let cache: ImageCache
+    private let cache: ImageCache
     let executingOperations: ExecutingOperationsController
     
     public var qos: QualityOfService {

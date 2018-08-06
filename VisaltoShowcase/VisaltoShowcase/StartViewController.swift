@@ -17,19 +17,9 @@ class StartViewController: UIViewController {
         
         view.backgroundColor = .white
         
-        let nextButton = UIButton(type: .custom)
-        nextButton.setTitleColor(.green, for: .normal)
-        nextButton.translatesAutoresizingMaskIntoConstraints = false
-        nextButton.setTitle("Next", for: .normal)
-        nextButton.addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
-        view.addSubview(nextButton)
-        
-        
-        NSLayoutConstraint.activate([
-            nextButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            nextButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-        ])
-        
+        configureStartButton()
+        configureDropCacheButton()
+
     }
         
     @objc private func didTapButton(_ button: UIButton) {
@@ -37,5 +27,35 @@ class StartViewController: UIViewController {
         navigationController?.pushViewController(imageTableViewController, animated: true)
     }
     
+    @objc private func didTapDropCacheButton(_ barButtonItem: UIBarButtonItem) {
+        Visalto.shared.clearCache()
+    }
+    
+}
+
+private extension StartViewController {
+    
+    func configureStartButton() {
+        
+        let nextButton = UIButton(type: .custom)
+        nextButton.setTitleColor(.blue, for: .normal)
+        nextButton.translatesAutoresizingMaskIntoConstraints = false
+        nextButton.setTitle("Start", for: .normal)
+        nextButton.addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
+        view.addSubview(nextButton)
+        
+        
+        NSLayoutConstraint.activate([
+            nextButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            nextButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            ])
+    }
+    
+    func configureDropCacheButton() {
+        
+        let dropCacheButton = UIBarButtonItem(title: "Drop cache", style: .plain, target: self, action: #selector(didTapDropCacheButton(_:)))
+        navigationItem.rightBarButtonItem = dropCacheButton
+        
+    }
     
 }
