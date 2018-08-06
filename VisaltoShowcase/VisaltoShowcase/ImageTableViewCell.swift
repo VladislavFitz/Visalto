@@ -12,6 +12,7 @@ import UIKit
 class ImageTableViewCell: UITableViewCell {
     
     let vImageView: UIImageView
+    
     var imageURL: URL? {
         didSet {
             vImageView.image = .none
@@ -35,9 +36,18 @@ class ImageTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        vImageView.image = .none
+    }
+    
     func updateImageView(with image: UIImage?) {
         vImageView.image = image
     }
+
+}
+
+private extension ImageTableViewCell {
     
     func configureLayout() {
         
@@ -49,12 +59,7 @@ class ImageTableViewCell: UITableViewCell {
             vImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
             vImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
         ])
-    
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        vImageView.image = .none
+        
     }
     
 }
