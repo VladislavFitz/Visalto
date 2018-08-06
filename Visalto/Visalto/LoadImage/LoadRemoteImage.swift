@@ -14,7 +14,7 @@ class LoadRemoteImage: AsyncOperation, LoadImage {
     var result: Result<UIImage>?
     
     private let urlSession: URLSession
-    private var task: URLSessionDataTask?
+    private weak var task: URLSessionDataTask?
     
     init?(url: URL, urlSession: URLSession = .shared) {
         
@@ -26,11 +26,7 @@ class LoadRemoteImage: AsyncOperation, LoadImage {
         self.urlSession = urlSession
         
     }
-    
-    deinit {
         
-    }
-    
     override func main() {
                 
         let urlRequest = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10)

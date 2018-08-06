@@ -10,9 +10,42 @@ import Foundation
 
 public final class ImageCache {
     
+    /**
+     In-Memory cache storage
+    */
     private let storage: NSCache<NSURL, NSData>
+    
+    /**
+     Object ensuring thread-safe access to cache
+    */
     private let lock: NSObject
-    private let diskCache: DiskCache?
+    
+    /**
+     Disk cache storage
+    */
+    var diskCache: DiskCache?
+    
+    var useDisk: Bool {
+        
+        get {
+            return diskCache != nil
+        }
+        
+        set {
+            switch (diskCache, newValue) {
+            case (.none, false), (.some, true):
+                return
+                
+            case (.none, true):
+                diskCache = try? DiskCache()
+                
+            case (.some(let diskCache), false):
+                diskCache.clear()
+                self.diskCache = .none
+            }
+        }
+        
+    }
     
     init(useDisk: Bool = true) {
         storage = NSCache()
@@ -21,10 +54,12 @@ public final class ImageCache {
     }
     
     func contains(_ key: URL) -> Bool {
+        
         objc_sync_enter(lock)
         defer { objc_sync_exit(lock) }
         
         return storage.object(forKey: key as NSURL) != .none
+        
     }
     
     func load(for key: URL) -> CacheAccessResult {
@@ -48,16 +83,8 @@ public final class ImageCache {
         
     }
     
-    func store(_ image: UIImage, forKey key: URL) {
-        
-        guard let jpegRepresentation = UIImageJPEGRepresentation(image, 1) else { return }
-        
-        self.store(jpegRepresentation, forKey: key)
-        
-    }
-
-    
     func store(_ data: Data, forKey key: URL) {
+        
         objc_sync_enter(lock)
         defer { objc_sync_exit(lock) }
         
@@ -67,19 +94,35 @@ public final class ImageCache {
     }
     
     func remove(for key: URL) {
+        
         objc_sync_enter(lock)
         defer { objc_sync_exit(lock) }
         
         storage.removeObject(forKey: key as NSURL)
         diskCache?.remove(forKey: key)
+        
     }
     
     public func clear() {
+        
         objc_sync_enter(lock)
         defer { objc_sync_exit(lock) }
         
         storage.removeAllObjects()
         diskCache?.clear()
+        
+    }
+    
+}
+
+extension ImageCache {
+    
+    func store(_ image: UIImage, forKey key: URL) {
+        
+        guard let jpegRepresentation = UIImageJPEGRepresentation(image, 1) else { return }
+        
+        self.store(jpegRepresentation, forKey: key)
+        
     }
     
 }

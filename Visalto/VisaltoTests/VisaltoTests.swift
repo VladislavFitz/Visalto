@@ -10,15 +10,7 @@ import XCTest
 @testable import Visalto
 
 class VisaltoTests: XCTestCase {
-    
-    override func setUp() {
-        super.setUp()
-    }
-    
-    override func tearDown() {
-        super.tearDown()
-    }
-        
+            
     func testLoadImage() {
         
         let exp = expectation(description: "Load eiffel tower image from web")

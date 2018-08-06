@@ -1,5 +1,5 @@
 //
-//  ImageFromData.swift
+//  LoadImageFromData.swift
 //  Visalto
 //
 //  Created by Vladislav Fitc on 05/08/2018.
@@ -8,12 +8,14 @@
 
 import Foundation
 
-class ImageFromData: Operation {
+class LoadImageFromData: Operation, LoadImage {
     
+    let url: URL
     let data: Data
     var result: Result<UIImage>?
     
-    init(data: Data) {
+    init(url: URL, data: Data) {
+        self.url = url
         self.data = data
     }
     
@@ -26,17 +28,9 @@ class ImageFromData: Operation {
         if let image = UIImage(data: data) {
             result = .success(image)
         } else {
-            result = .failure(Error.incorrectData)
+            result = .failure(ImageLoadingError.invalidData(data))
         }
         
-    }
-    
-}
-
-extension ImageFromData {
-    
-    enum Error: Swift.Error {
-        case incorrectData
     }
     
 }

@@ -8,11 +8,29 @@
 
 import Foundation
 
+/**
+ Simple disk cache using web URL as cache key.
+ Stores dictionary which maps web URL to file ID on disk.
+ State of dictionary is stored in UserDefaults.
+ */
+
 final class DiskCache {
     
-    private var urlMap: [URL: String]
+    /**
+     Dictionary mapping web URL to file ID
+    */
+    private var urlToFileMap: [URL: String]
+    
+    /**
+     Variable used for generation of a unique file ID for newly stored files
+    */
     private var fileCounter: Int
+    
+    /**
+     Object ensuring thread-safe access to cache
+    */
     private let lock: NSObject
+    
     private let cacheFolderURL: URL
     private let fileManager: FileManager
     
@@ -21,12 +39,12 @@ final class DiskCache {
     private let storedStateKey = "visalto.diskCache.state"
     
     var isEmpty: Bool {
-        return urlMap.isEmpty
+        return urlToFileMap.isEmpty
     }
     
     init(fileManager: FileManager = .default) throws {
         
-        self.urlMap = [:]
+        self.urlToFileMap = [:]
         self.lock = NSObject()
         self.fileManager = fileManager
         self.fileCounter = 0
@@ -51,75 +69,11 @@ final class DiskCache {
             return url
         }
         
-        guard let fileID = urlMap[url] else {
+        guard let fileID = urlToFileMap[url] else {
             return .none
         }
         
         return fileURL(forFileWithID: fileID)
-        
-    }
-    
-    func contains(_ key: URL) -> Bool {
-        
-        objc_sync_enter(lock)
-        defer { objc_sync_exit(lock) }
-        
-        return urlMap[key] != nil
-        
-    }
-    
-    func store(_ data: Data, forKey key: URL) {
-        
-        objc_sync_enter(lock)
-        defer { objc_sync_exit(lock) }
-        
-        if key.isFileURL || urlMap[key] != nil {
-            return
-        }
-        
-        let fileID = self.fileID()
-        let fileURL = self.fileURL(forFileWithID: fileID)
-        
-        fileManager.createFile(atPath: fileURL.path, contents: data, attributes: .none)
-
-        urlMap[key] = fileID
-        
-        storeState()
-        
-    }
-    
-    func remove(forKey key: URL) {
-        
-        objc_sync_enter(lock)
-        defer { objc_sync_exit(lock) }
-        
-        guard let fileID = urlMap[key] else {
-            return
-        }
-        
-        let fileURL = self.fileURL(forFileWithID: fileID)
-        
-        urlMap.removeValue(forKey: key)
-        try? fileManager.removeItem(at: fileURL)
-        
-        storeState()
-        
-    }
-    
-    func clear() {
-        
-        objc_sync_enter(lock)
-        defer { objc_sync_exit(lock) }
-        
-        urlMap.removeAll()
-        fileCounter = 0
-        
-        for fileID in urlMap.values {
-            let fileURL = self.fileURL(forFileWithID: fileID)
-            try? fileManager.removeItem(at: fileURL)
-        }
-        
-        storeState()
         
     }
     
@@ -133,13 +87,76 @@ final class DiskCache {
         return cacheFolderURL.appendingPathComponent(fileID)
     }
     
+    func contains(_ key: URL) -> Bool {
+        
+        objc_sync_enter(lock)
+        defer { objc_sync_exit(lock) }
+        
+        return urlToFileMap[key] != nil
+        
+    }
+    
+    func store(_ data: Data, forKey key: URL) {
+        
+        objc_sync_enter(lock)
+        defer { objc_sync_exit(lock) }
+        
+        if key.isFileURL || urlToFileMap[key] != nil {
+            return
+        }
+        
+        let fileID = self.fileID()
+        let fileURL = self.fileURL(forFileWithID: fileID)
+        
+        fileManager.createFile(atPath: fileURL.path, contents: data, attributes: .none)
+
+        urlToFileMap[key] = fileID
+        
+        storeState()
+        
+    }
+    
+    func remove(forKey key: URL) {
+        
+        objc_sync_enter(lock)
+        defer { objc_sync_exit(lock) }
+        
+        guard let fileID = urlToFileMap[key] else {
+            return
+        }
+        
+        let fileURL = self.fileURL(forFileWithID: fileID)
+        
+        urlToFileMap.removeValue(forKey: key)
+        try? fileManager.removeItem(at: fileURL)
+        
+        storeState()
+        
+    }
+    
+    func clear() {
+        
+        objc_sync_enter(lock)
+        defer { objc_sync_exit(lock) }
+        
+        urlToFileMap.removeAll()
+        fileCounter = 0
+        
+        for fileID in urlToFileMap.values {
+            let fileURL = self.fileURL(forFileWithID: fileID)
+            try? fileManager.removeItem(at: fileURL)
+        }
+        
+        storeState()
+        
+    }
+    
     private func storeState() {
         
-        let state = State(fileCounter: fileCounter, urlMap: urlMap)
+        let state = State(fileCounter: fileCounter, urlMap: urlToFileMap)
         if let encodedState = try? JSONEncoder().encode(state) {
             UserDefaults.standard.set(encodedState, forKey: storedStateKey)
         }
-        
         
     }
     
@@ -153,7 +170,7 @@ final class DiskCache {
             return
         }
         
-        self.urlMap = state.urlMap
+        self.urlToFileMap = state.urlMap
         self.fileCounter = state.fileCounter
         
     }

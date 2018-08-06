@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AFAE8D75211794E400384A4B /* ImageFromData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAE8D74211794E400384A4B /* ImageFromData.swift */; };
-		AFC0B219211507150070A190 /* LoadImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC0B218211507150070A190 /* LoadImageFactory.swift */; };
+		AFAE8D75211794E400384A4B /* LoadImageFromData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAE8D74211794E400384A4B /* LoadImageFromData.swift */; };
 		AFC0B21B211660610070A190 /* ExecutingOperationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC0B21A211660610070A190 /* ExecutingOperationsController.swift */; };
 		AFC0B21D21170C0C0070A190 /* DiskCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC0B21C21170C0C0070A190 /* DiskCache.swift */; };
 		AFC0B21F211737FB0070A190 /* DiskCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC0B21E211737FB0070A190 /* DiskCacheTests.swift */; };
@@ -40,6 +39,7 @@
 		AFCF841C2113B242000189F2 /* ImageURLs in Resources */ = {isa = PBXBuildFile; fileRef = AFCF841B2113B242000189F2 /* ImageURLs */; };
 		AFCF841E2113B53A000189F2 /* RemoteTestImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCF841D2113B53A000189F2 /* RemoteTestImages.swift */; };
 		AFCF84222113B74C000189F2 /* LoadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCF84212113B74C000189F2 /* LoadImage.swift */; };
+		AFEB801A2117C24900678CDB /* String+Lines.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEB80192117C24900678CDB /* String+Lines.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,8 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AFAE8D74211794E400384A4B /* ImageFromData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFromData.swift; sourceTree = "<group>"; };
-		AFC0B218211507150070A190 /* LoadImageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadImageFactory.swift; sourceTree = "<group>"; };
+		AFAE8D74211794E400384A4B /* LoadImageFromData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadImageFromData.swift; sourceTree = "<group>"; };
 		AFC0B21A211660610070A190 /* ExecutingOperationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExecutingOperationsController.swift; sourceTree = "<group>"; };
 		AFC0B21C21170C0C0070A190 /* DiskCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskCache.swift; sourceTree = "<group>"; };
 		AFC0B21E211737FB0070A190 /* DiskCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskCacheTests.swift; sourceTree = "<group>"; };
@@ -84,6 +83,7 @@
 		AFCF841B2113B242000189F2 /* ImageURLs */ = {isa = PBXFileReference; lastKnownFileType = text; path = ImageURLs; sourceTree = "<group>"; };
 		AFCF841D2113B53A000189F2 /* RemoteTestImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteTestImages.swift; sourceTree = "<group>"; };
 		AFCF84212113B74C000189F2 /* LoadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadImage.swift; sourceTree = "<group>"; };
+		AFEB80192117C24900678CDB /* String+Lines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Lines.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,20 +126,13 @@
 		AFCF83D621139E64000189F2 /* Visalto */ = {
 			isa = PBXGroup;
 			children = (
-				AFCF83F421139F04000189F2 /* Model */,
+				AFEB80182117C14400678CDB /* Cache */,
+				AFEB80172117C13600678CDB /* LoadImage */,
 				AFCF83EE21139E8B000189F2 /* Utils */,
 				AFCF83D721139E64000189F2 /* Visalto.h */,
 				AFCF83D821139E64000189F2 /* Info.plist */,
 				AFCF83F021139E9F000189F2 /* Visalto.swift */,
-				AFC0B21C21170C0C0070A190 /* DiskCache.swift */,
-				AFCF83FB2113A20C000189F2 /* ImageCache.swift */,
-				AFCF84212113B74C000189F2 /* LoadImage.swift */,
-				AFAE8D74211794E400384A4B /* ImageFromData.swift */,
-				AFC0B218211507150070A190 /* LoadImageFactory.swift */,
-				AFCF83F72113A1B5000189F2 /* LoadRemoteImage.swift */,
-				AFCF83FD2113A3FE000189F2 /* LoadLocalImage.swift */,
 				AFC0B21A211660610070A190 /* ExecutingOperationsController.swift */,
-				AFCF83F92113A1CA000189F2 /* ImageLoadingError.swift */,
 			);
 			path = Visalto;
 			sourceTree = "<group>";
@@ -151,12 +144,12 @@
 				AFCF83FF2113A54C000189F2 /* VisaltoTests.swift */,
 				AFCF84142113ABBF000189F2 /* LocalTestImages.swift */,
 				AFCF841D2113B53A000189F2 /* RemoteTestImages.swift */,
+				AFC0B21E211737FB0070A190 /* DiskCacheTests.swift */,
+				AFCF84052113A5AE000189F2 /* ImageCacheTests.swift */,
 				AFCF84012113A59B000189F2 /* LoadRemoteImageTests.swift */,
 				AFCF84032113A5A5000189F2 /* LoadLocalImageTests.swift */,
-				AFCF84052113A5AE000189F2 /* ImageCacheTests.swift */,
-				AFC0B21E211737FB0070A190 /* DiskCacheTests.swift */,
-				AFCF83E421139E64000189F2 /* Info.plist */,
 				AFCF84122113AABA000189F2 /* Bundle+Convenience.swift */,
+				AFCF83E421139E64000189F2 /* Info.plist */,
 				AFCF841B2113B242000189F2 /* ImageURLs */,
 			);
 			path = VisaltoTests;
@@ -166,16 +159,10 @@
 			isa = PBXGroup;
 			children = (
 				AFCF83F221139EE4000189F2 /* AsyncOperation.swift */,
+				AFCF83F521139F11000189F2 /* Result.swift */,
+				AFEB80192117C24900678CDB /* String+Lines.swift */,
 			);
 			path = Utils;
-			sourceTree = "<group>";
-		};
-		AFCF83F421139F04000189F2 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				AFCF83F521139F11000189F2 /* Result.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		AFCF84072113A869000189F2 /* TestImages */ = {
@@ -188,6 +175,27 @@
 				AFCF84102113A8CF000189F2 /* ET4.jpg */,
 			);
 			path = TestImages;
+			sourceTree = "<group>";
+		};
+		AFEB80172117C13600678CDB /* LoadImage */ = {
+			isa = PBXGroup;
+			children = (
+				AFCF84212113B74C000189F2 /* LoadImage.swift */,
+				AFAE8D74211794E400384A4B /* LoadImageFromData.swift */,
+				AFCF83FD2113A3FE000189F2 /* LoadLocalImage.swift */,
+				AFCF83F72113A1B5000189F2 /* LoadRemoteImage.swift */,
+				AFCF83F92113A1CA000189F2 /* ImageLoadingError.swift */,
+			);
+			path = LoadImage;
+			sourceTree = "<group>";
+		};
+		AFEB80182117C14400678CDB /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				AFCF83FB2113A20C000189F2 /* ImageCache.swift */,
+				AFC0B21C21170C0C0070A190 /* DiskCache.swift */,
+			);
+			path = Cache;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,16 +321,16 @@
 			files = (
 				AFCF83FC2113A20C000189F2 /* ImageCache.swift in Sources */,
 				AFCF83FE2113A3FE000189F2 /* LoadLocalImage.swift in Sources */,
+				AFEB801A2117C24900678CDB /* String+Lines.swift in Sources */,
 				AFCF84222113B74C000189F2 /* LoadImage.swift in Sources */,
 				AFCF83F621139F11000189F2 /* Result.swift in Sources */,
 				AFCF83FA2113A1CA000189F2 /* ImageLoadingError.swift in Sources */,
 				AFCF83F321139EE4000189F2 /* AsyncOperation.swift in Sources */,
 				AFCF83F121139E9F000189F2 /* Visalto.swift in Sources */,
-				AFC0B219211507150070A190 /* LoadImageFactory.swift in Sources */,
 				AFC0B21D21170C0C0070A190 /* DiskCache.swift in Sources */,
 				AFCF83F82113A1B5000189F2 /* LoadRemoteImage.swift in Sources */,
 				AFC0B21B211660610070A190 /* ExecutingOperationsController.swift in Sources */,
-				AFAE8D75211794E400384A4B /* ImageFromData.swift in Sources */,
+				AFAE8D75211794E400384A4B /* LoadImageFromData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

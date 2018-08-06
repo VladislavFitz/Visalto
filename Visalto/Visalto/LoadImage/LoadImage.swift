@@ -8,7 +8,12 @@
 
 import Foundation
 
-protocol LoadImage {
+
+/**
+ Protocol defining abstract load image operation.
+*/
+
+protocol LoadImage: class {
     
     var url: URL { get }
     var result: Result<UIImage>? { get }
@@ -29,6 +34,5 @@ extension LoadImage where Self: Operation {
     var operation: Operation {
         return self
     }
-    
     
 }

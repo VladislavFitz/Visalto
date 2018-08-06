@@ -12,33 +12,61 @@ public final class Visalto {
     
     public static let shared = Visalto()
     
-    internal let queue: OperationQueue
+    let queue: OperationQueue
+    public var urlSession: URLSession
     public let cache: ImageCache
-    internal let executingOperations: ExecutingOperationsController
+    let executingOperations: ExecutingOperationsController
+    
+    public var qos: QualityOfService {
         
+        get {
+            return queue.qualityOfService
+        }
+        
+        set {
+            queue.qualityOfService = newValue
+        }
+        
+    }
+    
+    public var useDiskCache: Bool {
+        
+        get {
+            return cache.useDisk
+        }
+        
+        set {
+            cache.useDisk = newValue
+        }
+        
+    }
+    
     private init() {
         queue = OperationQueue()
-        queue.qualityOfService = .utility
+        queue.qualityOfService = .userInitiated
+        urlSession = .shared
         cache = ImageCache(useDisk: true)
         executingOperations = ExecutingOperationsController()
     }
-
+    
     /**
      Load image for web or file URL
      - parameter url: URL to image
-     - parameter qos: Quality of service of image loading
+     - parameter qos: Quality of service of load image operation. Default: .userInitiated
+     - parameter queuePriority: Priority in queue of load image operation. Default: .normal
      - parameter completionQueue: Dispatch queue in which completion will be called
      - parameter completion: Callback returning result of load image operation
     */
     
     public func loadImage(with url: URL,
                    qos: QualityOfService = .userInitiated,
+                   queuePriority: Operation.QueuePriority = .normal,
                    completionQueue: DispatchQueue = .main,
                    completion: @escaping (Result<UIImage>) -> Void) {
         
         /*
             If an operation with specified URL is alredy launched or waiting,
-            no need to create one more operation
+            no need to create one more operation with same URL
         */
         
         if let existingOperation = executingOperations.operation(for: url),
@@ -46,49 +74,37 @@ public final class Visalto {
             return
         }
         
-        let effectiveURL: URL
+        let loadImage: LoadImage
         
         switch cache.load(for: url) {
         case .memoryHit(let imageData):
-            
-            let imageFromData = ImageFromData(data: imageData)
-            
-            imageFromData.completionBlock = {
-                completionQueue.async {
-                    completion(imageFromData.result!)
-                }
-            }
-            
-            queue.addOperation(imageFromData)
-            return
+            loadImage = LoadImageFromData(url: url, data: imageData)
             
         case .diskHit(let fileURL):
-            effectiveURL = fileURL
+            loadImage = LoadLocalImage(url: fileURL)!
+            
+        case .miss where url.isFileURL:
+            loadImage = LoadLocalImage(url: url)!
             
         case .miss:
-            effectiveURL = url
+            loadImage = LoadRemoteImage(url: url, urlSession: urlSession)!
         }
-        
-        let loadImage = LoadImageFactory.loadImage(for: effectiveURL)
         
         executingOperations.add(loadImage, for: url)
         
         loadImage.operation.qualityOfService = qos
+        loadImage.operation.queuePriority = queuePriority
         
-        loadImage.operation.completionBlock = { [weak self] in
+        loadImage.operation.completionBlock = { [weak self, weak loadImage] in
             
             guard let strongSelf = self else { return }
             
             strongSelf.executingOperations.removeOperation(for: url)
             
-            guard let result = loadImage.result else {
+            guard let result = loadImage?.result else {
                 return
             }
-            
-            if case .failure(let error) = result {
-                print(error.localizedDescription)
-            }
-            
+
             if case .success(let image) = result {
                 strongSelf.cache.store(image, forKey: url)
             }
@@ -114,12 +130,20 @@ public final class Visalto {
     }
     
     /**
-     Cancels all launched and scheduled image loading operations
+     Cancel all launched and scheduled image loading operations
      */
     
     public func cancelAll() {
         queue.cancelAllOperations()
         executingOperations.clear()
+    }
+    
+    /**
+     Clear memory and disk caches
+    */
+    
+    public func clearCache() {
+        cache.clear()
     }
     
 }

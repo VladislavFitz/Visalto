@@ -22,11 +22,7 @@ class LoadLocalImage: Operation, LoadImage {
         self.url = url
         
     }
-    
-    deinit {
-        
-    }
-    
+            
     override func main() {
         
         do {
